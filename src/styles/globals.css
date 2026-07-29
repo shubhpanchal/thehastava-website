@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-navy: #0A1E33;
+  --color-navy-dark: #051321;
+  --color-navy-light: #1E3A56;
+  --color-gold: #B9935A;
+  --color-gold-dark: #9D7B47;
+  --color-gold-light: #D4AF77;
+  --color-ivory: #FAF6F0;
+  --color-ivory-dark: #F2ECDF;
+  --color-ivory-light: #FDFDFB;
+  --color-slate: #1B2A3A;
+  --color-slate-muted: #56697E;
+  
+  /* Fonts */
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+
+  /* Border Radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-xl: 18px;
+
+  /* Premium Shadows */
+  --shadow-premium: 0 4px 20px -2px rgba(10, 30, 51, 0.04), 0 2px 6px -1px rgba(10, 30, 51, 0.02);
+  --shadow-premium-hover: 0 12px 30px -4px rgba(10, 30, 51, 0.08), 0 4px 12px -2px rgba(10, 30, 51, 0.04);
+  --shadow-luxury: 0 24px 48px -12px rgba(10, 30, 51, 0.08);
+  --shadow-gold-glow: 0 4px 20px -2px rgba(185, 147, 90, 0.15);
+}
+
+/* Global resets & luxury transitions */
+:root {
+  --background: var(--color-ivory);
+  --foreground: var(--color-slate);
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-slate);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-navy);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Luxury Utilities & Patterns */
+@utility container-custom {
+  width: 100%;
+  max-width: 80rem; /* 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@utility section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@utility section-padding-lg {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+@utility text-gold-gradient {
+  background: linear-gradient(135deg, #B9935A 0%, #D4AF77 50%, #9D7B47 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility bg-navy-gradient {
+  background: linear-gradient(180deg, #0A1E33 0%, #051321 100%);
+}
+
+@utility border-luxury-subtle {
+  border-color: var(--color-ivory-dark);
+}
+
+/* Custom interactive underline for menus and minimal ghost buttons */
+@utility link-underline-gold {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-gold);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}

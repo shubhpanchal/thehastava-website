@@ -1,120 +1,66 @@
 import React from "react";
+import Image from "next/image";
 import { Container } from "../shared/container";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
+import { Card, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
+import { IMAGE_MANIFEST } from "@/config/images";
 
 interface CraftItem {
   name: string;
   location: string;
-  icon: React.ReactNode;
+  imageKey: string;
 }
 
 const CRAFT_ITEMS: CraftItem[] = [
   {
     name: "Dhokra Art",
     location: "Bastar, CG",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Stylized metal horse/deer silhouette */}
-        <path d="M4 18h4l3-6h5l2 6h2M6 8l-2-4M10 6h4M12 12V6M16 12l2-4" />
-      </svg>
-    ),
+    imageKey: "giDhokraArt",
   },
   {
     name: "Banarasi Sarees",
     location: "Varanasi, UP",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Weave pattern / floral motif */}
-        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2ZM7 12h10M12 7v10" />
-        <path d="m9.5 9.5 5 5M9.5 14.5l5-5" />
-      </svg>
-    ),
+    imageKey: "giBanarasiSaree",
   },
   {
     name: "Kutch Embroidery",
     location: "Kutch, GJ",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Geometric mirror/needlework star */}
-        <path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    ),
+    imageKey: "giKutchEmbroidery",
   },
   {
     name: "Blue Pottery",
     location: "Jaipur, RJ",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Vase/jar outline */}
-        <path d="M7 20h10M8 4h8M12 4v4M6 10c0-3 3-4 6-4s6 1 6 4c0 6-3 10-6 10s-6-4-6-10Z" />
-      </svg>
-    ),
+    imageKey: "giBluePottery",
   },
   {
     name: "Madhubani Painting",
     location: "Mithila, BR",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Sun/eye motif */}
-        <circle cx="12" cy="12" r="8" />
-        <circle cx="12" cy="12" r="4" />
-        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
-      </svg>
-    ),
+    imageKey: "giMadhubaniPainting",
   },
   {
     name: "Pashmina",
     location: "Kashmir, JK",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Wave/soft fabric texture */}
-        <path d="M3 10c3-3 6-3 9 0s6 3 9 0M3 14c3-3 6-3 9 0s6 3 9 0" />
-      </svg>
-    ),
+    imageKey: "giPashmina",
   },
   {
     name: "Pochampally Ikat",
     location: "Yadadri, TS",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Ikat diamond geometry */}
-        <path d="M12 2 2 12l10 10 10-10L12 2ZM12 6l-6 6 6 6 6-6-6-6Z" />
-      </svg>
-    ),
+    imageKey: "giPochampallyIkat",
   },
   {
     name: "Channapatna Toys",
     location: "Ramanagara, KA",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Lathe-turned wood stack / spinner */}
-        <path d="M12 2v20M7 8h10M5 13h14M8 18h8" />
-        <circle cx="12" cy="5" r="1.5" />
-      </svg>
-    ),
+    imageKey: "giChannapatnaToys",
   },
   {
     name: "Bidriware",
     location: "Bidar, KA",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Silver inlay flower/urn */}
-        <path d="M12 3v18M7 7h10M9 12h6M12 17h4" />
-        <path d="M7 7c0-2.5 10-2.5 10 0v8c0 3.5-3 6-5 6s-5-2.5-5-6V7Z" stroke="currentColor" />
-      </svg>
-    ),
+    imageKey: "giBidriware",
   },
   {
     name: "Kondapalli Toys",
     location: "Krishna, AP",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold">
-        {/* Wood horse/rocker silhouette */}
-        <path d="M3 17c5 4 13 4 18 0M7 17v-6h4v6M14 17V8l4-2v11" />
-      </svg>
-    ),
+    imageKey: "giKondapalliToys",
   },
 ];
 
@@ -158,28 +104,38 @@ export function GiShowcase() {
         {/* Right Column: Data-Driven Responsive Grid */}
         <div className="lg:col-span-8 flex flex-col gap-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
-            {CRAFT_ITEMS.map((item) => (
-              <Card
-                key={item.name}
-                variant="bordered"
-                hoverable={true}
-                className="bg-navy-light/10 border-navy-light/40 hover:border-gold/40 hover:bg-navy-light/20 group p-4 flex flex-col items-center justify-between text-center gap-3 h-full transition-all duration-300"
-              >
-                <CardHeader className="p-0 flex items-center justify-center">
-                  <div className="p-2.5 rounded-full bg-navy-light/20 group-hover:scale-105 transition-transform duration-300">
-                    {item.icon}
+            {CRAFT_ITEMS.map((item) => {
+              const imgData = IMAGE_MANIFEST[item.imageKey];
+              return (
+                <Card
+                  key={item.name}
+                  variant="bordered"
+                  hoverable={true}
+                  className="bg-navy-light/10 border-navy-light/40 hover:border-gold/40 hover:bg-navy-light/20 group p-2.5 flex flex-col justify-between text-left aspect-[4/5] h-full transition-all duration-300"
+                >
+                  {/* Product Image Area */}
+                  <div className="flex-grow relative w-full h-32 sm:h-40 overflow-hidden mb-2 rounded-xs bg-navy-dark/40">
+                    <Image
+                      src={imgData.src}
+                      alt={imgData.alt}
+                      fill
+                      sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 15vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      loading="lazy"
+                    />
                   </div>
-                </CardHeader>
-                <CardContent className="p-0 flex flex-col items-center gap-0.5">
-                  <CardTitle className="text-sm font-serif text-ivory tracking-wide group-hover:text-gold transition-colors">
-                    {item.name}
-                  </CardTitle>
-                  <span className="font-sans text-[0.6rem] uppercase tracking-widest text-gold/60 font-semibold">
-                    {item.location}
-                  </span>
-                </CardContent>
-              </Card>
-            ))}
+                  {/* Craft metadata details */}
+                  <div className="flex flex-col gap-0.5">
+                    <CardTitle className="text-sm font-serif text-ivory tracking-wide group-hover:text-gold transition-colors truncate">
+                      {item.name}
+                    </CardTitle>
+                    <span className="font-sans text-[0.6rem] uppercase tracking-widest text-gold/60 font-semibold truncate">
+                      {imgData.origin || item.location}
+                    </span>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
           
           <div className="text-right">

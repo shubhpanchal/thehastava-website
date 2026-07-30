@@ -32,13 +32,41 @@ export default function ContactPage() {
     category: "",
     message: "",
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formState.name.trim()) newErrors.name = "Full name is required";
+    if (!formState.company.trim()) newErrors.company = "Company name is required";
+    if (!formState.email.trim()) {
+      newErrors.email = "Corporate email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
+      newErrors.email = "Please enter a valid corporate email address";
+    }
+    if (!formState.category) newErrors.category = "Please select a craft category";
+    if (!formState.message.trim()) newErrors.message = "Sourcing specifications are required";
+    return newErrors;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API request
-    setSubmitted(true);
-    setFormState({ name: "", company: "", email: "", category: "", message: "" });
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setErrors({});
+
+    // Simulate API request delay
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setFormState({ name: "", company: "", email: "", category: "", message: "" });
+    }, 1200);
   };
 
   return (
@@ -72,14 +100,19 @@ export default function ContactPage() {
               <span className="font-medium">sourcing@hastava.com</span>
             </div>
             <div className="flex flex-col gap-1">
+              <span className="text-[0.65rem] uppercase tracking-wider font-bold text-gold">Phone Number</span>
+              <a href="tel:+919762753259" className="font-medium hover:text-gold transition-colors">+91 97627 53259</a>
+            </div>
+            <div className="flex flex-col gap-1">
               <span className="text-[0.65rem] uppercase tracking-wider font-bold text-gold">Instagram</span>
               <a href="https://instagram.com/the_hastava" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gold transition-colors">@the_hastava</a>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-[0.65rem] uppercase tracking-wider font-bold text-gold">Trade Office Address</span>
               <span className="font-medium text-slate-muted">
-                12, Heritage Arcade, Sector 5, <br />
-                Malviya Nagar, Jaipur, Rajasthan - 302017, India
+                Chavhan Nivas, near sai kadba kutti, <br />
+                Kawade Nagar, Lane no1, New Sangvi, <br />
+                Pune - 411027, India
               </span>
             </div>
           </div>
@@ -106,17 +139,21 @@ export default function ContactPage() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <Input
                   label="Full Name"
                   required
+                  disabled={isSubmitting}
+                  error={errors.name}
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                 />
                 <Input
                   label="Company Name"
                   required
+                  disabled={isSubmitting}
+                  error={errors.company}
                   value={formState.company}
                   onChange={(e) => setFormState({ ...formState, company: e.target.value })}
                 />
@@ -125,6 +162,8 @@ export default function ContactPage() {
                 label="Corporate Email Address"
                 type="email"
                 required
+                disabled={isSubmitting}
+                error={errors.email}
                 value={formState.email}
                 onChange={(e) => setFormState({ ...formState, email: e.target.value })}
               />
@@ -136,9 +175,12 @@ export default function ContactPage() {
                 </label>
                 <select
                   required
+                  disabled={isSubmitting}
                   value={formState.category}
                   onChange={(e) => setFormState({ ...formState, category: e.target.value })}
-                  className="w-full font-sans text-sm text-navy placeholder:text-slate-muted/50 px-4 py-3 bg-ivory-light border border-ivory-dark rounded-sm focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all duration-300"
+                  className={`w-full font-sans text-sm text-navy placeholder:text-slate-muted/50 px-4 py-3 bg-ivory-light border rounded-sm focus:border-gold focus:ring-1 focus:ring-gold/20 focus:outline-none transition-all duration-300 ${
+                    errors.category ? "border-red-500! focus:border-red-500! focus:ring-red-500/10!" : "border-ivory-dark"
+                  }`}
                 >
                   <option value="">Select a craft category...</option>
                   <option value="ceramics">Jaipur Blue Pottery (Ceramics)</option>
@@ -147,6 +189,11 @@ export default function ContactPage() {
                   <option value="wood">Saharanpur Carvings (Woodware)</option>
                   <option value="other">Multiple Categories / General Inquiry</option>
                 </select>
+                {errors.category && (
+                  <p className="font-sans text-xs text-red-500 tracking-wide mt-0.5">
+                    {errors.category}
+                  </p>
+                )}
               </div>
 
               <Input
@@ -154,13 +201,15 @@ export default function ContactPage() {
                 rows={5}
                 label="Sourcing Specifications"
                 required
+                disabled={isSubmitting}
+                error={errors.message}
                 helperText="Please include target quantities, design details, or certification requests."
                 value={formState.message}
                 onChange={(e) => setFormState({ ...formState, message: e.target.value })}
               />
 
               <div className="pt-2">
-                <Button type="submit" variant="primary" size="lg" className="w-full sm:w-auto">
+                <Button type="submit" variant="primary" size="lg" className="w-full sm:w-auto" isLoading={isSubmitting}>
                   Submit Inquiry
                 </Button>
               </div>

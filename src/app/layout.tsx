@@ -59,6 +59,37 @@ export default function RootLayout({
       <body
         className={`${jakarta.variable} ${cormorant.variable} font-sans bg-ivory text-slate antialiased flex flex-col min-h-screen`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "HASTAVA",
+              "url": "https://www.thehastava.com",
+              "logo": "https://www.thehastava.com/images/blue-pottery.jpg.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-97627-53259",
+                "contactType": "sourcing desk",
+                "email": "sourcing@hastava.com",
+                "areaServed": "Worldwide",
+                "availableLanguage": ["en", "hi"]
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Chavhan Nivas, near sai kadba kutti, Kawade Nagar, Lane no1, New Sangvi",
+                "addressLocality": "Pune",
+                "addressRegion": "Maharashtra",
+                "postalCode": "411027",
+                "addressCountry": "IN"
+              },
+              "sameAs": [
+                "https://instagram.com/the_hastava"
+              ]
+            }),
+          }}
+        />
         {/* Skip to Content Accessibility Link */}
         <a
           href="#main-content"

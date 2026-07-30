@@ -38,7 +38,7 @@ const CRAFT_CATALOG: Craft[] = [
     category: "Textiles & Handlooms",
     origin: "Srinagar, Jammu & Kashmir",
     description: "Ultra-fine cashmere wool hand-spun and woven by master artisans on traditional looms. Famous for its light weight, natural warmth, and exquisite hand-embroidered borders.",
-    manifestKey: "banarasiSilk",
+    manifestKey: "handWeaving",
   },
   {
     title: "Saharanpur Wood Carvings",
@@ -48,11 +48,11 @@ const CRAFT_CATALOG: Craft[] = [
     manifestKey: "woodCarving",
   },
   {
-    title: "Moradabad Brassware",
-    category: "Metalware & Utilities",
-    origin: "Moradabad, Uttar Pradesh",
-    description: "Premium sheet metal and cast brass serving platters, urns, and luxury home decor. Featuring elaborate hand-engravings, polishing treatments, and lacquer seals.",
-    manifestKey: "dhokraArt",
+    title: "Banarasi Silk Sarees",
+    category: "Textiles & Weaving",
+    origin: "Varanasi, Uttar Pradesh",
+    description: "Exquisite hand-woven Banarasi sarees featuring luxury silk weaves with metallic gold and silver brocade (Zari) patterns. Hand-loomed in traditional Varanasi weaver cooperatives.",
+    manifestKey: "banarasiSilk",
   },
   {
     title: "Kutch Handloom Embroidery",

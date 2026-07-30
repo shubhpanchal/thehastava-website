@@ -114,8 +114,8 @@ export function Hero() {
           <div className="col-span-5 aspect-square border border-ivory-dark rounded-sm p-2.5 bg-ivory-light flex flex-col justify-between relative overflow-hidden group">
             <div className="flex-grow relative w-full h-full overflow-hidden mb-2 rounded-xs bg-ivory-dark/10">
               <Image
-                src={IMAGE_MANIFEST.woodCarving.src}
-                alt={IMAGE_MANIFEST.woodCarving.alt}
+                src={IMAGE_MANIFEST.dhokraArt.src}
+                alt={IMAGE_MANIFEST.dhokraArt.alt}
                 fill
                 sizes="(max-width: 768px) 30vw, 20vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -123,8 +123,8 @@ export function Hero() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-sm font-medium text-navy">{IMAGE_MANIFEST.woodCarving.title}</span>
-              <span className="font-sans text-[0.6rem] uppercase tracking-wider text-slate-muted">{IMAGE_MANIFEST.woodCarving.origin}</span>
+              <span className="font-serif text-sm font-medium text-navy">{IMAGE_MANIFEST.dhokraArt.title}</span>
+              <span className="font-sans text-[0.6rem] uppercase tracking-wider text-slate-muted">{IMAGE_MANIFEST.dhokraArt.origin}</span>
             </div>
           </div>
 
@@ -143,7 +143,7 @@ export function Hero() {
                 <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="1" />
               </svg>
             </div>
-            <h3 className="font-serif text-lg sm:text-xl font-normal leading-relaxed max-w-md">
+            <h3 className="font-serif text-lg sm:text-xl font-normal leading-relaxed max-w-md text-ivory">
               &ldquo;Bringing India&apos;s rich artisan heritage and GI-tagged handicrafts to the world.&rdquo;
             </h3>
           </div>

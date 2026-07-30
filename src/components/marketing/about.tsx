@@ -65,7 +65,7 @@ export function About() {
         <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-end relative">
           
           {/* Framed Editorial Picture (Artisan Hands) */}
-          <div className="md:col-span-8 border-2 border-ivory-dark/60 p-3 bg-ivory-light shadow-premium rounded-xs relative group">
+          <div className="md:col-span-7 border-2 border-ivory-dark/60 p-3 bg-ivory-light shadow-premium rounded-xs relative group">
             <div className="relative aspect-[3/4] overflow-hidden bg-ivory border border-ivory-dark flex flex-col justify-between p-6">
               
               {/* Decorative Corner Lines */}
@@ -92,13 +92,13 @@ export function About() {
               {/* Editorial label */}
               <div className="flex flex-col gap-1 border-t border-ivory-dark/30 pt-3 z-10 bg-ivory-light/95 p-3 rounded-xs relative shadow-sm">
                 <span className="font-serif text-sm font-medium text-navy">Hands of the Craft</span>
-                <span className="font-sans text-[0.6rem] uppercase tracking-wider text-slate-muted">Saharanpur Wood Carving</span>
+                <span className="font-sans text-[0.6rem] uppercase tracking-wider text-slate-muted">Clay Pottery Molding</span>
               </div>
             </div>
           </div>
 
           {/* Golden Impact Badge Card */}
-          <div className="md:col-span-6 md:absolute md:-right-6 md:bottom-6 bg-gold text-ivory border border-gold-light/40 p-6 shadow-luxury rounded-sm flex flex-col gap-4 max-w-sm md:translate-x-4">
+          <div className="md:col-span-5 bg-gold text-ivory border border-gold-light/40 p-5 shadow-luxury rounded-sm flex flex-col gap-4 w-full">
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-full bg-ivory/10 text-ivory">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

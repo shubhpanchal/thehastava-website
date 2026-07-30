@@ -67,7 +67,7 @@ export function Header() {
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            className="p-2 text-navy hover:text-gold outline-none focus:ring-1 focus:ring-gold/30 rounded-xs"
+            className="p-2 text-navy hover:text-gold rounded-xs transition-colors duration-200"
           >
             {isMenuOpen ? (
               // Close Icon

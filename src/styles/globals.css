@@ -32,25 +32,27 @@
   --shadow-gold-glow: 0 4px 20px -2px rgba(185, 147, 90, 0.15);
 }
 
-/* Global resets & luxury transitions */
-:root {
-  --background: var(--color-ivory);
-  --foreground: var(--color-slate);
-}
+@layer base {
+  /* Global resets & luxury transitions */
+  :root {
+    --background: var(--color-ivory);
+    --foreground: var(--color-slate);
+  }
 
-body {
-  background-color: var(--color-ivory);
-  color: var(--color-slate);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-}
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
 
-/* Typography styles */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  color: var(--color-navy);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  /* Typography styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--color-navy);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
 }
 
 /* Luxury Utilities & Patterns */

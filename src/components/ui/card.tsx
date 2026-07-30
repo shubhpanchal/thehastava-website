@@ -40,16 +40,24 @@ export const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
 CardHeader.displayName = "CardHeader";
 
 export const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className = "", ...props }, ref) => (
-    <h3 ref={ref} className={`font-serif text-xl font-medium text-navy tracking-wide ${className}`} {...props} />
-  )
+  ({ className = "", ...props }, ref) => {
+    const hasColor = /text-(?:white|ivory|navy|gold|slate|red|green|blue|gray|yellow|orange|purple|pink)/.test(className);
+    const defaultColor = hasColor ? "" : "text-navy";
+    return (
+      <h3 ref={ref} className={`font-serif text-xl font-medium tracking-wide ${defaultColor} ${className}`} {...props} />
+    );
+  }
 );
 CardTitle.displayName = "CardTitle";
 
 export const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
-  ({ className = "", ...props }, ref) => (
-    <p ref={ref} className={`font-sans text-xs text-slate-muted tracking-wide ${className}`} {...props} />
-  )
+  ({ className = "", ...props }, ref) => {
+    const hasColor = /text-(?:white|ivory|navy|gold|slate|red|green|blue|gray|yellow|orange|purple|pink)/.test(className);
+    const defaultColor = hasColor ? "" : "text-slate-muted";
+    return (
+      <p ref={ref} className={`font-sans text-xs tracking-wide ${defaultColor} ${className}`} {...props} />
+    );
+  }
 );
 CardDescription.displayName = "CardDescription";
 

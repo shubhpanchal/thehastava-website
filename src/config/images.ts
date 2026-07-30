@@ -55,7 +55,7 @@ export const IMAGE_MANIFEST: Record<string, ManifestImage> = {
     origin: "Kutch, Gujarat",
   },
   exportLogistics: {
-    src: "/images/export-logistics.svg",
+    src: "/images/export-logistics.png",
     alt: "Consolidated, reinforced cardboard crates stacked inside secure export warehouse",
     title: "Sourcing Logistics",
     category: "Logistics",

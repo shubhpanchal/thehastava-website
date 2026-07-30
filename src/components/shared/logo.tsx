@@ -15,9 +15,9 @@ export function Logo({ light = false, className = "", size = "md" }: LogoProps) 
 
   // Dimension mapping for sizing consistency
   const dimensions = {
-    sm: { width: 56, height: 56 },
-    md: { width: 96, height: 96 },
-    lg: { width: 140, height: 140 },
+    sm: { width: 68, height: 64 },
+    md: { width: 107, height: 100 },
+    lg: { width: 150, height: 140 },
   };
 
   const currentDims = dimensions[size] || dimensions.md;

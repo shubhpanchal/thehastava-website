@@ -27,28 +27,30 @@ export function Header() {
   return (
     <header className="sticky top-0 w-full bg-ivory/90 backdrop-blur-md border-b border-ivory-dark/40 z-50 transition-colors duration-300">
       <Container className="flex items-center justify-between h-20">
-        {/* Brand Logo */}
-        <Logo size="sm" />
+        <div className="flex items-center gap-12">
+          {/* Brand Logo */}
+          <Logo size="sm" />
 
-        {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center gap-6">
-          {NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`font-sans text-[0.7rem] uppercase tracking-[0.2em] font-semibold transition-colors ${
-                  isActive
-                    ? "text-gold"
-                    : "text-navy hover:text-gold"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden xl:flex items-center gap-6">
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`font-sans text-[0.7rem] uppercase tracking-[0.2em] font-semibold transition-colors ${
+                    isActive
+                      ? "text-gold"
+                      : "text-navy hover:text-gold"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
 
         {/* Desktop CTA */}
         <div className="hidden xl:block">

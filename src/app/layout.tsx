@@ -72,13 +72,13 @@ export default function RootLayout({
                 "@type": "ContactPoint",
                 "telephone": "+91-97627-53259",
                 "contactType": "sourcing desk",
-                "email": "sourcing@hastava.com",
+                "email": "hello@thehastava.com",
                 "areaServed": "Worldwide",
                 "availableLanguage": ["en", "hi"]
               },
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Chavhan Nivas, near sai kadba kutti, Kawade Nagar, Lane no1, New Sangvi",
+                "streetAddress": "Chavhan Nivas, Near Sai Kadba Kutti, Kawade Nagar, Lane no1, New Sangvi",
                 "addressLocality": "Pune",
                 "addressRegion": "Maharashtra",
                 "postalCode": "411027",

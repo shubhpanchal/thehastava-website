@@ -97,7 +97,7 @@ export default function ContactPage() {
           <div className="flex flex-col gap-4 border-t border-ivory-dark/65 pt-6 font-sans text-xs sm:text-sm text-navy">
             <div className="flex flex-col gap-1">
               <span className="text-[0.65rem] uppercase tracking-wider font-bold text-gold">Business Inquiries</span>
-              <span className="font-medium">sourcing@hastava.com</span>
+              <a href="mailto:hello@thehastava.com" className="font-medium hover:text-gold transition-colors">hello@thehastava.com</a>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-[0.65rem] uppercase tracking-wider font-bold text-gold">Phone Number</span>

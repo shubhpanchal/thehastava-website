@@ -36,7 +36,7 @@ export function Hero() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             <Button href="/crafts" variant="primary" size="lg" className="group">
-              Explore Our Crafts
+              Request Wholesale Catalog
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -49,7 +49,7 @@ export function Hero() {
               </svg>
             </Button>
             <Button href="/contact" variant="outline" size="lg">
-              Talk to a Sourcing Expert
+              Request Export Consultation
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

@@ -46,7 +46,7 @@ export function CTA() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mt-2">
           <Button href="/contact" variant="secondary" size="lg" className="group">
-            Schedule a Discovery Call
+            Request Export Consultation
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -60,7 +60,7 @@ export function CTA() {
           </Button>
           
           <Button href="/contact" variant="outline-gold" size="lg">
-            Contact Sourcing Desk
+            Discuss Custom Manufacturing
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

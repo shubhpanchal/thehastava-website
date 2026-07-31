@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "../shared/container";
 import { Card, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
@@ -9,6 +10,7 @@ interface CraftItem {
   name: string;
   location: string;
   imageKey: string;
+  slug?: string;
 }
 
 const CRAFT_ITEMS: CraftItem[] = [
@@ -16,21 +18,25 @@ const CRAFT_ITEMS: CraftItem[] = [
     name: "Dhokra Art",
     location: "Bastar, CG",
     imageKey: "giDhokraArt",
+    slug: "bastar-dhokra-art",
   },
   {
     name: "Banarasi Sarees",
     location: "Varanasi, UP",
     imageKey: "giBanarasiSaree",
+    slug: "banarasi-silk-sarees",
   },
   {
     name: "Kutch Embroidery",
     location: "Kutch, GJ",
     imageKey: "giKutchEmbroidery",
+    slug: "kutch-handloom-embroidery",
   },
   {
     name: "Blue Pottery",
     location: "Jaipur, RJ",
     imageKey: "giBluePottery",
+    slug: "jaipur-blue-pottery",
   },
   {
     name: "Madhubani Painting",
@@ -41,6 +47,7 @@ const CRAFT_ITEMS: CraftItem[] = [
     name: "Pashmina",
     location: "Kashmir, JK",
     imageKey: "giPashmina",
+    slug: "kashmiri-pashmina",
   },
   {
     name: "Pochampally Ikat",
@@ -92,8 +99,8 @@ export function GiShowcase() {
             Geographical Indication (GI) tags protect regional heritage. We work directly with certified artisan cooperatives and weaver communities to bring you verified products that guarantee historical accuracy, genuine craftsmanship, and fair wage distribution.
           </p>
           <div className="pt-2">
-            <Button href="/gi-tagged" variant="outline-gold" size="md">
-              Explore GI Tagged Products
+            <Button href="/contact" variant="outline-gold" size="md">
+              Request Export Consultation
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 ml-2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
@@ -106,13 +113,8 @@ export function GiShowcase() {
           <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
             {CRAFT_ITEMS.map((item) => {
               const imgData = IMAGE_MANIFEST[item.imageKey];
-              return (
-                <Card
-                  key={item.name}
-                  variant="bordered"
-                  hoverable={true}
-                  className="bg-navy-light/10 border-navy-light/40 hover:border-gold/40 hover:bg-navy-light/20 group p-2.5 flex flex-col justify-between text-left aspect-[4/5] h-full transition-all duration-300"
-                >
+              const cardContent = (
+                <>
                   {/* Product Image Area */}
                   <div className="flex-grow relative w-full h-32 sm:h-40 overflow-hidden mb-2 rounded-xs bg-navy-dark/40">
                     <Image
@@ -133,6 +135,30 @@ export function GiShowcase() {
                       {imgData.origin || item.location}
                     </span>
                   </div>
+                </>
+              );
+
+              if (item.slug) {
+                return (
+                  <Link key={item.name} href={`/crafts/${item.slug}`} className="contents">
+                    <Card
+                      variant="bordered"
+                      hoverable={true}
+                      className="bg-navy-light/10 border-navy-light/40 hover:border-gold/40 hover:bg-navy-light/20 cursor-pointer group p-2.5 flex flex-col justify-between text-left aspect-[4/5] h-full transition-all duration-300"
+                    >
+                      {cardContent}
+                    </Card>
+                  </Link>
+                );
+              }
+
+              return (
+                <Card
+                  key={item.name}
+                  variant="bordered"
+                  className="bg-navy-light/10 border-navy-light/40 p-2.5 flex flex-col justify-between text-left aspect-[4/5] h-full"
+                >
+                  {cardContent}
                 </Card>
               );
             })}

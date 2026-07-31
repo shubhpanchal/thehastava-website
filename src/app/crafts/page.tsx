@@ -1,69 +1,19 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/shared/container";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardMedia } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { IMAGE_MANIFEST } from "@/config/images";
+import { CRAFT_DATABASE } from "@/config/crafts";
 
 export const metadata = {
   title: "Our Crafts | HASTAVA Sourcing Catalog",
   description: "Browse HASTAVA's collection of authentic Indian handicrafts, including Jaipur Blue Pottery, Bastar Dhokra Art, Kashmiri Pashmina, Saharanpur Wood Carving, and Banarasi Silk.",
 };
 
-interface Craft {
-  title: string;
-  category: string;
-  origin: string;
-  description: string;
-  manifestKey: keyof typeof IMAGE_MANIFEST;
-}
-
-const CRAFT_CATALOG: Craft[] = [
-  {
-    title: "Jaipur Blue Pottery",
-    category: "Ceramics & Pottery",
-    origin: "Jaipur, Rajasthan",
-    description: "Distinctive cobalt-blue glazed pottery crafted from a unique mix of quartz, raw glaze, and sodium sulphates. Every vase, plate, and tile is hand-formed and painted with delicate floral motifs.",
-    manifestKey: "bluePottery",
-  },
-  {
-    title: "Bastar Dhokra Art",
-    category: "Metal Castings",
-    origin: "Bastar, Chhattisgarh",
-    description: "Ancient non-ferrous lost-wax metal castings dating back over 4,000 years. Artisans craft highly detailed tribal motifs, animal figurines, and bells with a characteristic wire-work finish.",
-    manifestKey: "dhokraArt",
-  },
-  {
-    title: "Kashmiri Pashmina & Textiles",
-    category: "Textiles & Handlooms",
-    origin: "Srinagar, Jammu & Kashmir",
-    description: "Ultra-fine cashmere wool hand-spun and woven by master artisans on traditional looms. Famous for its light weight, natural warmth, and exquisite hand-embroidered borders.",
-    manifestKey: "handWeaving",
-  },
-  {
-    title: "Saharanpur Wood Carvings",
-    category: "Furniture & Decor",
-    origin: "Saharanpur, Uttar Pradesh",
-    description: "Intricately carved sheesham, teak, and mango wood block prints, panels, and tableware. Master woodcarvers use hand chisels to render detailed geometric and vine-like carvings.",
-    manifestKey: "woodCarving",
-  },
-  {
-    title: "Banarasi Silk Sarees",
-    category: "Textiles & Weaving",
-    origin: "Varanasi, Uttar Pradesh",
-    description: "Exquisite hand-woven Banarasi sarees featuring luxury silk weaves with metallic gold and silver brocade (Zari) patterns. Hand-loomed in traditional Varanasi weaver cooperatives.",
-    manifestKey: "banarasiSilk",
-  },
-  {
-    title: "Kutch Handloom Embroidery",
-    category: "Textiles & Apparels",
-    origin: "Kutch, Gujarat",
-    description: "Traditional mirror-work and heavy cotton thread embroidery passed down through generations. Brightly dyed fabrics detailed with intricate geometric patterns.",
-    manifestKey: "kutchEmbroidery",
-  },
-];
-
 export default function CraftsPage() {
+  const crafts = Object.values(CRAFT_DATABASE);
+
   return (
     <div className="bg-ivory py-16 sm:py-24">
       {/* Page Header */}
@@ -83,33 +33,48 @@ export default function CraftsPage() {
       {/* Catalog Grid */}
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {CRAFT_CATALOG.map((craft) => {
-            const asset = IMAGE_MANIFEST[craft.manifestKey];
+          {crafts.map((craft) => {
             return (
-              <Card key={craft.title} variant="bordered" hoverable={true} className="h-full">
-                <CardMedia className="aspect-[4/3] bg-ivory-dark/15">
-                  <Image
-                    src={asset.src}
-                    alt={asset.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
-                    className="object-cover"
-                    loading="lazy"
-                  />
-                </CardMedia>
-                <CardHeader className="gap-1.5">
-                  <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-wider font-sans font-bold text-gold">
-                    <span>{craft.category}</span>
-                    <span className="text-navy">{craft.origin}</span>
+              <Card key={craft.slug} variant="bordered" hoverable={true} className="h-full flex flex-col justify-between">
+                <div>
+                  <CardMedia className="aspect-[4/3] bg-ivory-dark/15">
+                    <Link href={`/crafts/${craft.slug}`}>
+                      <Image
+                        src={craft.heroImage.src}
+                        alt={craft.heroImage.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
+                        className="object-cover cursor-pointer"
+                        loading="lazy"
+                      />
+                    </Link>
+                  </CardMedia>
+                  <CardHeader className="gap-1.5">
+                    <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-wider font-sans font-bold text-gold">
+                      <span>{craft.subtitle}</span>
+                      <span className="text-navy">{craft.origin}, {craft.state}</span>
+                    </div>
+                    <CardTitle className="text-lg font-serif text-navy font-semibold mt-1">
+                      <Link href={`/crafts/${craft.slug}`} className="hover:text-gold transition-colors">
+                        {craft.title}
+                      </Link>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-slate-muted text-xs leading-relaxed">
+                      {craft.shortDescription}
+                    </CardDescription>
+                  </CardContent>
+                </div>
+                <CardContent className="pt-0 pb-6">
+                  <div className="pt-4 border-t border-ivory-dark/40">
+                    <Link 
+                      href={`/crafts/${craft.slug}`}
+                      className="font-sans text-xs font-bold uppercase tracking-wider text-gold hover:text-navy transition-colors duration-200 flex items-center gap-1"
+                    >
+                      Explore Sourcing Line &rarr;
+                    </Link>
                   </div>
-                  <CardTitle className="text-lg font-serif text-navy font-semibold mt-1">
-                    {craft.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-slate-muted text-xs leading-relaxed">
-                    {craft.description}
-                  </CardDescription>
                 </CardContent>
               </Card>
             );
@@ -119,7 +84,7 @@ export default function CraftsPage() {
         {/* Catalog CTA */}
         <div className="text-center mt-16">
           <Button href="/contact" variant="primary" size="lg">
-            Request Custom Catalog
+            Request Wholesale Catalog
           </Button>
         </div>
       </Container>

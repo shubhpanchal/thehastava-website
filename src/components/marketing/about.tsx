@@ -53,7 +53,7 @@ export function About() {
 
           <div className="pt-2">
             <Button href="/about" variant="outline" size="lg" className="group">
-              Learn More About Us
+              Learn About Our Sourcing Model
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>

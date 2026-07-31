@@ -3,6 +3,9 @@ import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { StickyCTAs } from "@/components/shared/StickyCTAs";
+import { ExitIntentModal } from "@/components/shared/ExitIntentModal";
+import { siteConfig } from "@/config/site";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
@@ -18,8 +21,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "HASTAVA | Authentic Indian Handicrafts Sourced with Integrity",
-  description: "HASTAVA connects global buyers with India's finest artisan communities and GI-tagged handicrafts. Sourcing, quality, and trust, delivered globally.",
+  title: `${siteConfig.companyName} | ${siteConfig.tagline}`,
+  description: `${siteConfig.companyName} connects global buyers with India's finest artisan communities and GI-tagged handicrafts. Sourcing, quality, and trust, delivered globally.`,
   keywords: [
     "Indian handicrafts Sourcing",
     "GI-tagged handicrafts India",
@@ -31,16 +34,16 @@ export const metadata: Metadata = {
     "Indian weaver cooperatives"
   ],
   openGraph: {
-    title: "HASTAVA | Authentic Indian Handicrafts Sourced with Integrity",
+    title: `${siteConfig.companyName} | ${siteConfig.tagline}`,
     description: "Direct-to-artisan sourcing for wholesalers and international brands. Authenticity, quality, and logistics, simplified.",
-    url: "https://hastava.com",
-    siteName: "HASTAVA",
+    url: siteConfig.website,
+    siteName: siteConfig.companyName,
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HASTAVA | Authentic Indian Handicrafts Sourced with Integrity",
+    title: `${siteConfig.companyName} | ${siteConfig.tagline}`,
     description: "Direct-to-artisan sourcing for wholesalers and international brands. Sourcing, quality, and trust.",
   },
   robots: {
@@ -65,27 +68,27 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "HASTAVA",
-              "url": "https://www.thehastava.com",
-              "logo": "https://www.thehastava.com/images/blue-pottery.jpg.png",
+              "name": siteConfig.companyName,
+              "url": siteConfig.website,
+              "logo": `${siteConfig.website}/images/logo-dark.png`,
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+91-97627-53259",
+                "telephone": siteConfig.phoneClean,
                 "contactType": "sourcing desk",
-                "email": "hello@thehastava.com",
+                "email": siteConfig.email,
                 "areaServed": "Worldwide",
                 "availableLanguage": ["en", "hi"]
               },
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Chavhan Nivas, Near Sai Kadba Kutti, Kawade Nagar, Lane no1, New Sangvi",
-                "addressLocality": "Pune",
-                "addressRegion": "Maharashtra",
-                "postalCode": "411027",
-                "addressCountry": "IN"
+                "streetAddress": siteConfig.address.street,
+                "addressLocality": siteConfig.address.locality,
+                "addressRegion": siteConfig.address.region,
+                "postalCode": siteConfig.address.postalCode,
+                "addressCountry": siteConfig.address.country
               },
               "sameAs": [
-                "https://instagram.com/the_hastava"
+                siteConfig.instagram
               ]
             }),
           }}
@@ -102,6 +105,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <StickyCTAs />
+        <ExitIntentModal />
       </body>
     </html>
   );

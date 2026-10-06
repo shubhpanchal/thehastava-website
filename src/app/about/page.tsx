@@ -1,74 +1,33 @@
-import React from "react";
-import Image from "next/image";
 import { Container } from "@/components/shared/container";
-import { IMAGE_MANIFEST } from "@/config/images";
-
-export const metadata = {
-  title: "About Us | HASTAVA Sourcing Partner",
-  description: "Learn about HASTAVA's mission, our direct-trade connection with Indian artisan clusters, and our commitment to authenticity, quality, and global distribution.",
-};
+import { siteConfig } from "@/config/site";
 
 export default function AboutPage() {
   return (
-    <div className="bg-ivory py-16 sm:py-24">
-      {/* Editorial Header */}
-      <Container className="max-w-4xl text-center flex flex-col gap-4 mb-16 sm:mb-20">
-        <span className="font-sans text-xs font-bold uppercase tracking-[0.25em] text-gold">
-          Our Heritage & Sourcing Model
-        </span>
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-navy leading-[1.1] tracking-tight">
-          Preserving Legacy. <br />
-          Simplifying Sourcing.
-        </h1>
-        <div className="h-0.5 w-16 bg-gold/50 mx-auto mt-2" />
-      </Container>
-
-      {/* Grid Overview */}
-      <Container className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-center mb-20">
-        <div className="lg:col-span-6 flex flex-col gap-6">
-          <h2 className="font-serif text-2xl sm:text-3xl text-navy">
-            Connecting Traditional Workshops with Modern Global Supply Chains
-          </h2>
-          <p className="font-sans text-sm text-slate-muted leading-relaxed">
-            HASTAVA was founded to bridge the gap between rural Indian artisans holding centuries-old heritage crafts and international importers requiring strict reliability, delivery timelines, and certified quality standards.
-          </p>
-          <p className="font-sans text-sm text-slate-muted leading-relaxed">
-            By acting as a direct sourcing agent, we eliminate middle-layer brokers, ensuring that artisans receive fair trade compensation and global retail partners receive genuine Geographical Indication (GI) tagged products at sustainable prices.
-          </p>
-        </div>
-        <div className="lg:col-span-6 relative aspect-video sm:aspect-4/3 overflow-hidden rounded-sm border border-ivory-dark bg-ivory-dark/10 shadow-premium">
-          <Image
-            src={IMAGE_MANIFEST.handWeaving.src}
-            alt={IMAGE_MANIFEST.handWeaving.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-            priority
-          />
-        </div>
-      </Container>
-
-      {/* Core Values */}
-      <Container className="bg-navy text-ivory rounded-sm p-8 sm:p-12 shadow-luxury grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
-        <div className="flex flex-col gap-3">
-          <h3 className="font-serif text-xl text-gold">Authenticity</h3>
-          <p className="font-sans text-xs sm:text-sm text-ivory/70 leading-relaxed">
-            Every product is fully audited and carries verified GI-tag certificates of origin, preserving original regional designs.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3">
-          <h3 className="font-serif text-xl text-gold">Transparency</h3>
-          <p className="font-sans text-xs sm:text-sm text-ivory/70 leading-relaxed">
-            We provide direct communication channels, open cost sheets, and mid-production audits to our B2B partners.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3">
-          <h3 className="font-serif text-xl text-gold">Sustainability</h3>
-          <p className="font-sans text-xs sm:text-sm text-ivory/70 leading-relaxed">
-            We operate on fair trade principles, supporting community development, child-free production, and safe working conditions.
-          </p>
-        </div>
-      </Container>
+    <div>
+      <section className="bg-[#061326] py-24 text-white md:py-32">
+        <Container>
+          <span className="section-eyebrow section-eyebrow-dark">About Hastava</span>
+          <h1 className="mt-4 max-w-4xl text-5xl font-semibold tracking-[-.04em] md:text-6xl">We build systems that remove manual work.</h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">Hastava helps businesses turn repetitive processes into practical AI, data, and automation workflows.</p>
+        </Container>
+      </section>
+      <section className="bg-white py-20 md:py-28">
+        <Container className="grid gap-14 lg:grid-cols-[.9fr_1.1fr]">
+          <div>
+            <span className="section-eyebrow">Our approach</span>
+            <h2 className="section-title mt-3">Start with the business problem. Then choose the technology.</h2>
+          </div>
+          <div className="space-y-6 text-base leading-8 text-slate-600">
+            <p>We focus on practical problems such as document processing, operational reporting, internal workflows, customer inquiries, and data movement between systems.</p>
+            <p>Rather than forcing a large transformation project, we look for one high-value process, design a focused solution, deploy it with the team, and improve it over time.</p>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <div className="text-sm font-semibold text-slate-950">Founder</div>
+              <div className="mt-2 text-lg font-semibold text-blue-700">{siteConfig.founderName}</div>
+              <p className="mt-2 text-sm leading-6 text-slate-600">Data engineering, AI, automation, and business systems.</p>
+            </div>
+          </div>
+        </Container>
+      </section>
     </div>
   );
 }

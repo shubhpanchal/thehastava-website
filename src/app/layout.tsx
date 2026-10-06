@@ -44,8 +44,11 @@ export const metadata: Metadata = {
     description: "AI, data, and automation solutions for modern businesses.",
   },
   icons: {
-    icon: "/brand/hastava-logo-dark.svg",
-    apple: "/brand/hastava-logo-dark.svg",
+    icon: [
+      { url: "/brand/hastava-mark-transparent.png", type: "image/png" },
+      { url: "/brand/hastava-mark.svg", type: "image/svg+xml" },
+    ],
+    apple: "/brand/hastava-mark-transparent.png",
   },
   robots: {
     index: true,

@@ -1,46 +1,147 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { Container } from "./container";
 import { Button } from "../ui/button";
 
-const NAV = [
-  ["Solutions", "/#solutions"],
-  ["Case Studies", "/case-studies"],
-  ["About", "/about"],
-  ["Contact", "/contact"],
+const NAV_ITEMS = [
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Close mobile menu on route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Handle ESC key to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    if (mobileMenuOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#061326]/90 text-white backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#061326]/90 text-white backdrop-blur-xl transition-colors duration-300">
       <Container className="flex h-[76px] items-center justify-between">
-        <Link href="/" className="group flex items-center gap-3" aria-label="HASTAVA home">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-blue-600 to-cyan-400 shadow-[0_8px_25px_rgba(37,99,235,.28)]">
-            <span className="text-lg font-black tracking-[-0.15em] text-white">H</span>
-          </div>
-          <div className="leading-none">
-            <div className="text-[1.15rem] font-bold tracking-[0.08em]">HASTAVA</div>
-            <div className="mt-1 text-[8px] font-semibold tracking-[0.22em] text-slate-400">AI • DATA • AUTOMATION</div>
-          </div>
+        {/* Brand Logo - Dark Background Transparent Vector/Image */}
+        <Link
+          href="/"
+          className="flex items-center focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-4 rounded-lg"
+          aria-label="HASTAVA Home"
+        >
+          <Image
+            src="/brand/hastava-logo-dark.svg"
+            alt="HASTAVA"
+            width={179}
+            height={55}
+            priority
+            className="h-auto w-32 sm:w-36 md:w-42 object-contain"
+          />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {NAV.map(([label, href]) => (
-            <Link key={href} href={href} className="text-sm font-medium text-slate-300 transition hover:text-white">
-              {label}
+        {/* Desktop Navigation */}
+        <nav
+          className="hidden items-center gap-8 md:flex"
+          aria-label="Main Navigation"
+        >
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-slate-300 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400 rounded-md py-1 px-2"
+            >
+              {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <Link href="/contact" className="hidden text-sm font-medium text-slate-300 transition hover:text-white sm:block">
-            Book a Call
-          </Link>
-          <Button href="/contact" size="sm" className="border-0 bg-gradient-to-r from-indigo-500 via-blue-600 to-cyan-500 normal-case tracking-normal text-white hover:text-white">
+        {/* Desktop Actions */}
+        <div className="hidden items-center gap-4 md:flex">
+          <Button
+            href="/contact"
+            size="sm"
+            className="normal-case tracking-normal text-white"
+            icon={<ArrowRight size={14} />}
+          >
             Talk to Hastava
           </Button>
         </div>
+
+        {/* Mobile Menu Toggle Button */}
+        <div className="flex items-center gap-2.5 md:hidden">
+          <Button
+            href="/contact"
+            size="sm"
+            className="text-xs px-3 py-1.5"
+          >
+            Talk to Hastava
+          </Button>
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="inline-flex h-9.5 w-9.5 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </Container>
+
+      {/* Mobile Navigation Dropdown */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            id="mobile-navigation"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden border-b border-white/10 bg-[#061326]/98 backdrop-blur-2xl md:hidden"
+          >
+            <Container className="flex flex-col gap-2 py-6">
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-xl px-4 py-3 text-base font-medium text-slate-200 transition-colors hover:bg-white/5 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <Button
+                  href="/contact"
+                  size="md"
+                  className="w-full justify-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                  icon={<ArrowRight size={16} />}
+                >
+                  Talk to Hastava
+                </Button>
+              </div>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

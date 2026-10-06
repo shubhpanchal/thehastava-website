@@ -1,6 +1,6 @@
-import React from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/shared/container";
-import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "404 - Page Not Found | HASTAVA",
@@ -9,22 +9,15 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <div className="bg-ivory flex items-center justify-center py-24 sm:py-32">
-      <Container className="max-w-md text-center flex flex-col items-center gap-6">
-        <span className="font-sans text-xs font-bold uppercase tracking-[0.25em] text-gold">
-          Error 404
-        </span>
-        <h1 className="font-serif text-3xl sm:text-4xl text-navy">
-          Heritage Lost
-        </h1>
-        <div className="h-0.5 w-12 bg-gold/50 my-1" />
-        <p className="font-sans text-xs sm:text-sm text-slate-muted leading-relaxed">
-          The trade page or resource document you are looking for has been relocated, renamed, or does not exist.
-        </p>
-        <div className="pt-2">
-          <Button href="/" variant="primary" size="lg">
-            Return to Homepage
-          </Button>
+    <div className="flex min-h-[70vh] items-center bg-[#061326] text-white">
+      <Container className="py-24 sm:py-32">
+        <div className="max-w-2xl">
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">Error 404</span>
+          <h1 className="mt-5 text-5xl font-semibold tracking-[-0.04em] sm:text-6xl">This workflow went somewhere else.</h1>
+          <p className="mt-6 max-w-xl text-base leading-7 text-slate-300">The page you are looking for does not exist or has moved during the HASTAVA website rebuild.</p>
+          <Link href="/" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 via-blue-600 to-cyan-500 px-6 py-3.5 font-semibold text-white transition hover:-translate-y-0.5">
+            <ArrowLeft size={17} /> Return to HASTAVA
+          </Link>
         </div>
       </Container>
     </div>

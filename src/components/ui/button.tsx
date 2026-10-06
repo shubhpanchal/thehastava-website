@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "outline-gold" | "ghost";
+  variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
   icon?: React.ReactNode;
@@ -26,24 +26,24 @@ export const Button = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, Bu
     },
     ref
   ) => {
-    // Base luxury styling classes
     const baseStyles =
-      "inline-flex items-center justify-center font-sans font-medium uppercase tracking-wider transition-all duration-300 ease-out focus:outline-none focus:ring-1 focus:ring-gold disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+      "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:opacity-50 disabled:pointer-events-none cursor-pointer select-none";
 
-    // Size variants
     const sizes = {
-      sm: "px-4 py-2.5 text-xs font-semibold rounded-xs",
-      md: "px-6 py-3.5 text-sm font-semibold rounded-sm",
-      lg: "px-8 py-4 text-base font-semibold rounded-md",
+      sm: "px-4 py-2 text-xs font-semibold gap-1.5",
+      md: "px-5 py-2.5 text-sm font-semibold gap-2",
+      lg: "px-7 py-3.5 text-base font-semibold gap-2.5",
     };
 
-    // Style variants matching HASTAVA's luxury brand
     const variants = {
-      primary: "bg-navy text-ivory border border-navy hover:bg-navy-light hover:border-navy-light hover:text-gold-light",
-      secondary: "bg-gold text-navy-dark border border-gold hover:bg-gold-dark hover:border-gold-dark hover:text-white",
-      outline: "bg-transparent text-navy border border-navy hover:bg-navy hover:text-white",
-      "outline-gold": "bg-transparent text-gold border border-gold hover:bg-gold hover:text-navy-dark",
-      ghost: "bg-transparent text-navy hover:text-gold link-underline-gold px-1! py-1!",
+      primary:
+        "bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 text-white shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5 active:translate-y-0",
+      secondary:
+        "bg-white/10 text-white hover:bg-white/15 border border-white/15 backdrop-blur-sm active:translate-y-0",
+      outline:
+        "bg-transparent text-slate-800 border border-slate-300 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50/50 active:translate-y-0",
+      ghost:
+        "bg-transparent text-slate-300 hover:text-white hover:bg-white/5 active:translate-y-0",
     };
 
     const combinedClassName = `${baseStyles} ${sizes[size]} ${variants[variant]} ${className}`.trim();
@@ -52,10 +52,11 @@ export const Button = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, Bu
       <>
         {isLoading && (
           <svg
-            className="animate-spin -ml-1 mr-2.5 h-4 w-4 text-current"
+            className="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <circle
               className="opacity-25"
@@ -73,16 +74,15 @@ export const Button = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, Bu
           </svg>
         )}
         {!isLoading && icon && iconPosition === "left" && (
-          <span className="mr-2 inline-flex items-center">{icon}</span>
+          <span className="inline-flex items-center shrink-0">{icon}</span>
         )}
         <span>{children}</span>
         {!isLoading && icon && iconPosition === "right" && (
-          <span className="ml-2 inline-flex items-center">{icon}</span>
+          <span className="inline-flex items-center shrink-0">{icon}</span>
         )}
       </>
     );
 
-    // If an href is provided, render as NextJS Link
     if (href) {
       return (
         <Link

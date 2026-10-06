@@ -151,7 +151,7 @@ export default function Home() {
 
       <section className="bg-white py-20 md:py-28">
         <Container>
-          <div className="reveal-up max-w-2xl">
+          <Reveal className="max-w-2xl">
             <span className="section-eyebrow">What Can We Automate?</span>
             <h2 className="section-title mt-3">Start with the repetitive work your team already knows.</h2>
           </Reveal>
@@ -161,7 +161,7 @@ export default function Home() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 font-semibold text-blue-700">✦</div>
                 <h3 className="mt-5 text-base font-semibold text-slate-950">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
-              </article>
+              </Reveal>
             ))}
           </div>
         </Container>

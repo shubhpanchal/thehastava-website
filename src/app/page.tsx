@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { ArrowUpRight, Bot, Database, FileText, Workflow } from "lucide-react";
 import { Container } from "@/components/shared/container";
+import { Reveal } from "@/components/ui/reveal";
 
 const services = [
-  ["AI Automation", "Automate repetitive workflows with practical AI.", "✦"],
-  ["Data & Analytics", "Turn scattered data into reliable reporting and insights.", "▥"],
-  ["Document Intelligence", "Extract and route information from PDFs, emails, and forms.", "□"],
-  ["Business Systems", "Build focused internal tools and integrations.", "↗"],
+  ["AI Automation", "Automate repetitive workflows with practical AI.", Bot],
+  ["Data & Analytics", "Turn scattered data into reliable reporting and insights.", Database],
+  ["Document Intelligence", "Extract and route information from PDFs, emails, and forms.", FileText],
+  ["Business Systems", "Build focused internal tools and integrations.", Workflow],
 ];
 const useCases = [
   ["Sales", "Incoming inquiries & RFQs"],
@@ -30,7 +32,7 @@ export default function Home() {
         <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
         <Container className="relative py-20 md:py-28 lg:py-32">
           <div className="grid items-center gap-14 lg:grid-cols-[1.02fr_.98fr]">
-            <div className="reveal-up max-w-3xl">
+            <Reveal className="max-w-3xl">
               <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-cyan-200">
                 <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_14px_rgba(34,211,238,.8)]" />
                 AI • DATA • AUTOMATION
@@ -58,8 +60,8 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="reveal-up delay-150 mx-auto w-full max-w-xl">
+            </Reveal>
+            <Reveal delay={0.15} className="mx-auto w-full max-w-xl">
               <div className="float-slow rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_35px_100px_rgba(0,0,0,.38)] backdrop-blur-xl">
                 <div className="rounded-[1.5rem] border border-blue-400/20 bg-[#091a33] p-5">
                   <div className="flex items-center justify-between border-b border-white/10 pb-4">
@@ -83,26 +85,26 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </Container>
       </section>
 
       <section id="solutions" className="bg-white py-20 md:py-28">
         <Container>
-          <div className="reveal-up max-w-2xl">
+          <Reveal className="max-w-2xl">
             <span className="section-eyebrow">What We Do</span>
             <h2 className="section-title mt-3">Practical AI and data solutions for modern businesses.</h2>
             <p className="section-copy mt-5">Start with one bottleneck. Automate it well. Then build from there.</p>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {services.map(([title,text,icon],i) => (
-              <article key={title} className="reveal-up group rounded-[1.5rem] border border-slate-200 p-7 shadow-[0_12px_40px_rgba(15,23,42,.05)] transition duration-300 hover:-translate-y-2 hover:border-blue-200" style={{animationDelay: (i*80)+"ms"}}>
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-50 to-cyan-50 text-xl font-semibold text-blue-700">{icon}</div>
+            {services.map(([title,text,Icon],i) => (
+              <Reveal key={title} delay={i * 0.08} className="group rounded-[1.5rem] border border-slate-200 p-7 shadow-[0_12px_40px_rgba(15,23,42,.05)] transition duration-300 hover:-translate-y-2 hover:border-blue-200">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-50 to-cyan-50 text-blue-700"><Icon size={21} strokeWidth={1.8} /></div>
                 <h3 className="mt-6 text-xl font-semibold text-slate-950">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
-                <div className="mt-6 text-sm font-semibold text-blue-600">Learn more →</div>
-              </article>
+                <div className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-blue-600">Learn more <ArrowUpRight size={15} /></div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -152,10 +154,10 @@ export default function Home() {
           <div className="reveal-up max-w-2xl">
             <span className="section-eyebrow">What Can We Automate?</span>
             <h2 className="section-title mt-3">Start with the repetitive work your team already knows.</h2>
-          </div>
+          </Reveal>
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {useCases.map(([title,text]) => (
-              <article key={title} className="reveal-up rounded-2xl border border-slate-200 p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-200">
+              <Reveal key={title} className="rounded-2xl border border-slate-200 p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-200">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 font-semibold text-blue-700">✦</div>
                 <h3 className="mt-5 text-base font-semibold text-slate-950">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>

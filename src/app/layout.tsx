@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "@/styles/globals.css";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
-import { siteConfig } from "@/config/site";
 
 const manrope = Manrope({
   variable: "--font-sans",
@@ -12,7 +12,11 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "HASTAVA | AI, Data & Automation for Businesses",
+  metadataBase: new URL("https://www.thehastava.com"),
+  title: {
+    default: "HASTAVA | AI, Data & Automation for Businesses",
+    template: "%s | HASTAVA",
+  },
   description:
     "AI, data, and automation solutions that eliminate repetitive work, connect your systems, and help your business operate faster.",
   keywords: [
@@ -23,15 +27,34 @@ export const metadata: Metadata = {
     "workflow automation",
     "Hastava",
   ],
+  alternates: {
+    canonical: "https://www.thehastava.com",
+  },
   openGraph: {
     title: "HASTAVA | Turn Manual Work Into Growth",
     description: "AI, data, and automation solutions for modern businesses.",
-    url: siteConfig.website,
-    siteName: siteConfig.companyName,
-    locale: "en_IN",
+    url: "https://www.thehastava.com",
+    siteName: "HASTAVA",
+    locale: "en_US",
     type: "website",
   },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: "HASTAVA | Turn Manual Work Into Growth",
+    description: "AI, data, and automation solutions for modern businesses.",
+  },
+  icons: {
+    icon: "/brand/hastava-logo-dark.svg",
+    apple: "/brand/hastava-logo-dark.svg",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -51,6 +74,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

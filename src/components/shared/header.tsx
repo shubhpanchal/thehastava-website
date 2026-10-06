@@ -8,6 +8,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Container } from "./container";
 import { Button } from "../ui/button";
+import { trackEvent } from "@/lib/analytics";
 
 const NAV_ITEMS = [
   { label: "Solutions", href: "/#solutions" },
@@ -77,9 +78,10 @@ export function Header() {
             href="/contact"
             size="sm"
             className="normal-case tracking-normal text-white"
+            onClick={() => trackEvent("discovery_cta_clicked", { location: "header_desktop" })}
             icon={<ArrowRight size={14} />}
           >
-            Talk to Hastava
+            Book a Discovery Call
           </Button>
         </div>
 
@@ -89,8 +91,9 @@ export function Header() {
             href="/contact"
             size="sm"
             className="text-xs px-3 py-1.5"
+            onClick={() => trackEvent("discovery_cta_clicked", { location: "header_mobile_compact" })}
           >
-            Talk to Hastava
+            Discovery Call
           </Button>
           <button
             type="button"
@@ -132,10 +135,13 @@ export function Header() {
                   href="/contact"
                   size="md"
                   className="w-full justify-center"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    trackEvent("discovery_cta_clicked", { location: "header_mobile_drawer" });
+                  }}
                   icon={<ArrowRight size={16} />}
                 >
-                  Talk to Hastava
+                  Book a Discovery Call
                 </Button>
               </div>
             </Container>

@@ -33,7 +33,6 @@ The site must sell business outcomes first and technology second.
 - `/` — Home
 - `/services` — Services overview
 - `/case-studies` — Case studies
-- `/case-studies/harivishva` — Harivishva showcase
 - `/about` — About HASTAVA
 - `/contact` — Discovery/contact
 
@@ -67,11 +66,8 @@ Four pillars:
 - Document Intelligence
 - Business Systems
 
-### Real Solutions. Real Impact.
-Featured HASTAVA showcase:
-**Harivishva**
-
-Must clearly distinguish demo/showcase status from verified production outcomes.
+### Solutions in Practice
+Generic capability architectures demonstrating practical operational workflows.
 
 ### What Can We Automate?
 Examples:

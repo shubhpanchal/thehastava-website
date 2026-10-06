@@ -8,13 +8,21 @@ import { siteConfig } from "@/config/site";
 const manrope = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "HASTAVA | AI, Data & Automation for Businesses",
-  description: "Hastava helps businesses automate repetitive work, improve data workflows, and build focused internal systems.",
-  keywords: ["AI automation", "business automation", "data engineering", "document intelligence", "workflow automation", "Hastava"],
+  description:
+    "AI, data, and automation solutions that eliminate repetitive work, connect your systems, and help your business operate faster.",
+  keywords: [
+    "AI automation",
+    "business automation",
+    "data engineering",
+    "document intelligence",
+    "workflow automation",
+    "Hastava",
+  ],
   openGraph: {
     title: "HASTAVA | Turn Manual Work Into Growth",
     description: "AI, data, and automation solutions for modern businesses.",
@@ -26,15 +34,22 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={manrope.variable + " font-sans bg-white text-slate-900 antialiased"}>
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow-xl">
-          Skip to content
+      <body className={`${manrope.variable} font-sans bg-white text-slate-900 antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-blue-600 focus:shadow-xl focus:ring-2 focus:ring-blue-600"
+        >
+          Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

@@ -1,33 +1,94 @@
-import Link from "next/link";
+import React from "react";
+import type { Metadata } from "next";
+import { ArrowRight, Clock, ShieldCheck, Sparkles } from "lucide-react";
 import { Container } from "@/components/shared/container";
+import { Reveal } from "@/components/ui/reveal";
+import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Case Studies | HASTAVA",
+  description: "Real work deserves real proof. Documented client outcomes and automated business workflows.",
+};
 
 export default function CaseStudiesPage() {
   return (
-    <div>
-      <section className="bg-[#061326] py-24 text-white md:py-32">
-        <Container>
-          <span className="section-eyebrow section-eyebrow-dark">Case Studies</span>
-          <h1 className="mt-4 max-w-4xl text-5xl font-semibold tracking-[-.04em] md:text-6xl">Real workflows. Focused automation.</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">A growing library of the business problems, systems, and solutions we build.</p>
+    <div className="overflow-x-hidden bg-[#061326] text-white">
+      {/* Hero Header */}
+      <section className="relative overflow-hidden py-24 md:py-32 border-b border-white/5">
+        <div className="hero-grid absolute inset-0 opacity-40 pointer-events-none" aria-hidden="true" />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full bg-blue-600/15 blur-[140px] pointer-events-none"
+          aria-hidden="true"
+        />
+
+        <Container className="relative z-10 text-center max-w-3xl mx-auto">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-cyan-300">
+              <Sparkles size={13} className="text-cyan-400" />
+              <span>Verified Outcomes</span>
+            </div>
+            <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
+              Real work deserves real proof.
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-slate-300">
+              We&apos;re building a library of documented client outcomes. As projects move into production, we&apos;ll publish the problem, solution, and verified results here.
+            </p>
+          </Reveal>
         </Container>
       </section>
-      <section className="bg-slate-50 py-20 md:py-28">
-        <Container>
-          <Link href="/case-studies/harivishva" className="group block overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,.08)] transition hover:-translate-y-1">
-            <div className="grid lg:grid-cols-[.85fr_1.15fr]">
-              <div className="min-h-[320px] bg-[#09182d] p-8">
-                <div className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">Featured showcase</div>
-                <div className="mt-5 text-4xl font-semibold text-white">Harivishva</div>
-                <p className="mt-4 max-w-sm text-sm leading-6 text-slate-300">A unified operating experience for property workflows, customer operations, bookings, and reporting.</p>
+
+      {/* Coming Soon Notice Card */}
+      <section className="relative py-20 md:py-28">
+        <Container className="max-w-4xl">
+          <Reveal>
+            <div className="overflow-hidden rounded-3xl border border-white/15 bg-[#081830]/80 p-8 md:p-12 backdrop-blur-xl shadow-2xl text-center">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 border border-cyan-400/30 text-cyan-300">
+                <Clock size={28} />
               </div>
-              <div className="p-8 md:p-10">
-                <div className="text-sm font-semibold text-blue-600">Business workflow platform</div>
-                <h2 className="mt-3 text-3xl font-semibold text-slate-950">From fragmented operations to one operating view.</h2>
-                <p className="mt-4 text-sm leading-7 text-slate-600">Explore the demo, the workflow design, and how the system is structured.</p>
-                <div className="mt-7 font-semibold text-blue-600 group-hover:translate-x-1 transition">Open case study →</div>
+
+              <h2 className="mt-6 text-2xl md:text-3xl font-bold tracking-tight text-white">
+                Case studies are currently in preparation
+              </h2>
+
+              <p className="mt-4 max-w-xl mx-auto text-sm leading-relaxed text-slate-300">
+                We believe in publishing honest, verified metrics rather than hypothetical claims. Production architectures and outcome telemetry will be published following milestone sign-offs.
+              </p>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 text-left max-w-lg mx-auto">
+                <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                  <ShieldCheck size={18} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <p className="text-xs text-slate-300">
+                    Documented technical architectures & live telemetry
+                  </p>
+                </div>
+                <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                  <Sparkles size={18} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <p className="text-xs text-slate-300">
+                    Real workflows across document parsing, data & systems
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button
+                  href="/contact"
+                  size="lg"
+                  className="font-semibold shadow-lg shadow-blue-600/25"
+                  icon={<ArrowRight size={16} />}
+                >
+                  Talk to Hastava
+                </Button>
+                <Button
+                  href="/#solutions"
+                  variant="secondary"
+                  size="lg"
+                  className="font-semibold"
+                >
+                  Explore Capabilities
+                </Button>
               </div>
             </div>
-          </Link>
+          </Reveal>
         </Container>
       </section>
     </div>

@@ -4,9 +4,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.thehastava.com";
   const routes = [
     "",
-    "/about",
+    "/services",
     "/case-studies",
-    "/case-studies/harivishva",
+    "/about",
     "/contact",
     "/privacy-policy",
     "/terms-and-conditions",

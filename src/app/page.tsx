@@ -96,7 +96,7 @@ export default function Home() {
             <span className="section-eyebrow">What We Do</span>
             <h2 className="section-title mt-3">Practical AI and data solutions for modern businesses.</h2>
             <p className="section-copy mt-5">Start with one bottleneck. Automate it well. Then build from there.</p>
-          </div>
+          </Reveal>
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {services.map(([title,text,Icon],i) => (
               <Reveal key={title} delay={i * 0.08} className="group rounded-[1.5rem] border border-slate-200 p-7 shadow-[0_12px_40px_rgba(15,23,42,.05)] transition duration-300 hover:-translate-y-2 hover:border-blue-200">

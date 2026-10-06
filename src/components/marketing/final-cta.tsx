@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles, MessageSquare } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 
 export function FinalCta() {
   return (
@@ -33,7 +34,7 @@ export function FinalCta() {
             </h2>
 
             <p className="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
-              Tell us what you are doing today. We&apos;ll help identify whether it can be automated.
+              Tell us what you are doing today. We&apos;ll help identify whether and how it can be automated.
             </p>
           </Reveal>
 
@@ -43,6 +44,7 @@ export function FinalCta() {
                 href="/contact"
                 size="lg"
                 className="text-base px-8 py-4 font-bold shadow-xl shadow-blue-600/30"
+                onClick={() => trackEvent("discovery_cta_clicked", { location: "final_cta_primary" })}
                 icon={<ArrowRight size={18} />}
               >
                 Book a Discovery Call
@@ -52,9 +54,10 @@ export function FinalCta() {
                 variant="secondary"
                 size="lg"
                 className="text-base px-6 py-4 font-semibold"
+                onClick={() => trackEvent("discovery_cta_clicked", { location: "final_cta_secondary" })}
                 icon={<MessageSquare size={16} />}
               >
-                Send Us a Message
+                Discuss Your Workflow
               </Button>
             </div>
           </Reveal>

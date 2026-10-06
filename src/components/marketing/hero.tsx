@@ -11,6 +11,7 @@ import {
 import { Container } from "@/components/shared/container";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 import { HeroVisual } from "./hero-visual";
 
 const PROOF_POINTS = [
@@ -83,6 +84,7 @@ export function Hero() {
                 href="/contact"
                 size="lg"
                 className="font-semibold shadow-lg shadow-blue-600/25"
+                onClick={() => trackEvent("discovery_cta_clicked", { location: "hero_primary" })}
                 icon={<ArrowRight size={16} />}
               >
                 Book a Discovery Call

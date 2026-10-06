@@ -40,19 +40,29 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#061326]/90 text-white backdrop-blur-xl transition-colors duration-300">
       <Container className="flex h-[76px] items-center justify-between">
-        {/* Brand Logo - Dark Background Transparent Vector/Image */}
+        {/* Brand Logo: Full logo on desktop, H-only mark on mobile */}
         <Link
           href="/"
           className="flex items-center focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-4 rounded-lg"
           aria-label="HASTAVA Home"
         >
+          {/* Mobile: Compact H-only brand mark */}
+          <Image
+            src="/brand/hastava-mark-transparent.png"
+            alt="HASTAVA"
+            width={456}
+            height={546}
+            priority
+            className="block md:hidden h-9 w-auto object-contain"
+          />
+          {/* Desktop: Full HASTAVA logo */}
           <Image
             src="/brand/hastava-logo-dark.svg"
             alt="HASTAVA"
             width={179}
             height={55}
             priority
-            className="h-auto w-32 sm:w-36 md:w-42 object-contain"
+            className="hidden md:block h-auto w-36 md:w-42 object-contain"
           />
         </Link>
 

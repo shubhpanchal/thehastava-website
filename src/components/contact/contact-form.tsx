@@ -69,6 +69,14 @@ export function ContactForm() {
 
       setFormStatus("success");
       trackEvent("contact_form_submitted", { company: data.company });
+
+      // Google Ads "Submit lead form" conversion event
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-18487685875/Ssp-CL37nJQdEPPIzu9E",
+        });
+      }
+
       reset();
     } catch (err: unknown) {
       setFormStatus("error");

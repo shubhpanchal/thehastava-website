@@ -28,21 +28,21 @@ const INDUSTRIES = [
 
 export function IndustryStrip() {
   return (
-    <section className="relative bg-slate-900/60 py-16 border-y border-white/5 text-white">
+    <section className="relative bg-white py-20 border-t border-slate-200/60 text-slate-900">
       <Container>
         <div className="flex flex-col items-center text-center">
           <Reveal>
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-400">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
               Cross-Industry Automation Capability
             </span>
-            <p className="mt-2 text-sm text-slate-300 max-w-xl">
-              Engineered to resolve operational bottlenecks across diverse industry domains.
+            <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-2xl">
+              Engineered to resolve complex operational bottlenecks across diverse business environments.
             </p>
           </Reveal>
         </div>
 
-        {/* Industry Interactive Pills Grid */}
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+        {/* Industry Interactive Cards Grid */}
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
           {INDUSTRIES.map((ind, index) => {
             const Icon = ind.icon;
             return (
@@ -51,16 +51,21 @@ export function IndustryStrip() {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.4, delay: index * 0.04 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] p-4 text-center backdrop-blur-sm transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/20 shadow-sm"
+                className="group flex flex-col items-center justify-between rounded-2xl border border-slate-200/90 bg-slate-50/80 p-5 text-center transition-all hover:border-blue-400 hover:bg-white hover:shadow-lg hover:shadow-slate-200/50"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10 text-cyan-300 transition-colors group-hover:bg-cyan-400/20 group-hover:text-cyan-200">
-                  <Icon size={20} />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100 transition-colors group-hover:bg-blue-100 group-hover:text-blue-700 shadow-2xs">
+                  <Icon size={22} />
                 </div>
-                <h3 className="mt-3 text-xs font-bold text-white tracking-tight">
-                  {ind.name}
-                </h3>
+                <div className="mt-4">
+                  <h3 className="text-xs font-bold text-slate-900 tracking-tight leading-snug">
+                    {ind.name}
+                  </h3>
+                  <p className="mt-1 text-[10px] text-slate-500 leading-tight">
+                    {ind.desc}
+                  </p>
+                </div>
               </motion.div>
             );
           })}

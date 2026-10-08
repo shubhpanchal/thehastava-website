@@ -37,12 +37,12 @@ const PRINCIPLES = [
 
 export default function AboutPage() {
   return (
-    <div className="overflow-x-hidden bg-[#061326] text-white">
+    <div className="overflow-x-hidden bg-white text-slate-900">
       {/* Hero Header */}
-      <section className="relative overflow-hidden py-24 md:py-32 border-b border-white/5">
-        <div className="hero-grid absolute inset-0 opacity-40 pointer-events-none" aria-hidden="true" />
+      <section className="relative overflow-hidden hero-luminous py-20 md:py-28 text-white border-b border-white/10">
+        <div className="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full bg-blue-600/15 blur-[140px] pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full bg-blue-500/20 blur-[140px] pointer-events-none"
           aria-hidden="true"
         />
 
@@ -55,7 +55,7 @@ export default function AboutPage() {
             <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
               We build systems that remove manual work.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-slate-300">
+            <p className="mt-6 text-lg leading-relaxed text-slate-200">
               HASTAVA helps modern organizations convert repetitive manual processes into reliable AI, data pipelines, and automated business software.
             </p>
           </Reveal>
@@ -63,51 +63,51 @@ export default function AboutPage() {
       </section>
 
       {/* Main Philosophy & Principles */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative bg-[#F8FAFC] py-20 md:py-28 text-slate-900 border-b border-slate-200/60">
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 items-start">
             <div className="lg:col-span-5">
               <Reveal>
-                <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
                   Our Engineering Approach
                 </span>
-                <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+                <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
                   Start with the business bottleneck. Then engineer the solution.
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300">
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
                   Rather than pushing generic SaaS tools or lengthy transformation consulting, we identify high-value manual time drains, build a targeted system, integrate it with your tools, and refine it as your operations grow.
                 </p>
 
-                <div className="mt-8 rounded-2xl border border-white/10 bg-[#081830]/80 p-6 backdrop-blur-xl">
-                  <div className="text-xs font-bold uppercase tracking-wider text-cyan-400">
+                <div className="mt-8 rounded-3xl border border-slate-200/90 bg-white p-7 shadow-sm">
+                  <div className="text-xs font-bold uppercase tracking-wider text-blue-600">
                     Founder & Technical Direction
                   </div>
-                  <div className="mt-2 text-lg font-bold text-white">
+                  <div className="mt-2 text-xl font-bold text-slate-900">
                     {siteConfig.founderName}
                   </div>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-300">
+                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
                     Focused on business automation, data engineering, document intelligence, and unified operating software.
                   </p>
                 </div>
               </Reveal>
             </div>
 
-            <div className="lg:col-span-7 grid gap-4 sm:grid-cols-2">
+            <div className="lg:col-span-7 grid gap-6 sm:grid-cols-2">
               {PRINCIPLES.map((principle, index) => {
                 const Icon = principle.icon;
                 return (
                   <Reveal
                     key={principle.title}
                     delay={index * 0.08}
-                    className="rounded-2xl border border-white/10 bg-[#081830]/80 p-6 backdrop-blur-xl"
+                    className="rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-8 shadow-sm transition-all hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/50"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/30 text-cyan-300">
-                      <Icon size={20} />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200/80 text-blue-600 shadow-2xs">
+                      <Icon size={22} />
                     </div>
-                    <h3 className="mt-5 text-lg font-bold text-white">
+                    <h3 className="mt-5 text-xl font-bold text-slate-900">
                       {principle.title}
                     </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-slate-300">
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
                       {principle.desc}
                     </p>
                   </Reveal>
@@ -119,7 +119,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#061326] via-[#091f3c] to-[#061326] py-20 text-white border-t border-white/10">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#08172B] via-[#0B1F38] to-[#12345A] py-20 text-white border-t border-white/10">
         <Container className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">

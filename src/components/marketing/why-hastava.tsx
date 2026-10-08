@@ -5,90 +5,99 @@ import { Compass, Sparkles, Zap, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { Reveal } from "@/components/ui/reveal";
 
-const PRINCIPLES = [
-  {
-    title: "Business-first",
-    subtitle: "We start with operational problems, not tech hype",
-    desc: "Every automation project begins by identifying your specific team bottlenecks, manual time drains, and system constraints before writing a single line of code.",
-    icon: Compass,
-    gradient: "from-blue-500/15 via-cyan-500/10 to-transparent",
-  },
-  {
-    title: "Practical AI",
-    subtitle: "Reliable automation with predictable accuracy",
-    desc: "We focus on pragmatic AI models engineered for deterministic data extraction, workflow routing, and validation — avoiding expensive, ungrounded experiments.",
-    icon: Sparkles,
-    gradient: "from-cyan-500/15 via-blue-500/10 to-transparent",
-  },
-  {
-    title: "Data expertise",
-    subtitle: "Clean pipelines & reliable schemas at the core",
-    desc: "Automation is only as good as the underlying data. We build robust schemas, validation gates, and API connectors that keep your data clean and reliable.",
-    icon: Zap,
-    gradient: "from-indigo-500/15 via-purple-500/10 to-transparent",
-  },
-  {
-    title: "Built for you",
-    subtitle: "Custom architecture aligned to your exact stack",
-    desc: "We engineer systems tailored to your specific tools and business workflows, avoiding bloated off-the-shelf software subscriptions you only half use.",
-    icon: ShieldCheck,
-    gradient: "from-emerald-500/15 via-cyan-500/10 to-transparent",
-  },
-];
-
 export function WhyHastava() {
+  const WHY_FEATURES = [
+    {
+      title: "Business-First Approach",
+      subtitle: "We start with operational friction, not tech hype",
+      desc: "Every automation project begins by identifying your specific team bottlenecks, manual time drains, and system constraints before writing a single line of code.",
+      icon: Compass,
+      highlights: ["Bottleneck discovery", "Time-drain audits", "Clear ROI scoping"],
+      accent: "from-blue-500/10 via-blue-500/5 to-transparent",
+    },
+    {
+      title: "Practical AI Deployment",
+      subtitle: "Reliable automation with predictable accuracy",
+      desc: "We focus on pragmatic AI models engineered for deterministic data extraction, workflow routing, and validation — avoiding expensive, ungrounded experiments.",
+      icon: Sparkles,
+      highlights: ["Deterministic models", "99%+ extraction accuracy", "Continuous validation"],
+      accent: "from-cyan-500/10 via-cyan-500/5 to-transparent",
+    },
+    {
+      title: "Deep Data Expertise",
+      subtitle: "Clean pipelines & reliable schemas at the core",
+      desc: "Automation is only as good as the underlying data. We build robust schemas, validation gates, and API connectors that keep your data clean and reliable.",
+      icon: Zap,
+      highlights: ["Single source of truth", "Schema validation", "Automated ETL pipelines"],
+      accent: "from-indigo-500/10 via-indigo-500/5 to-transparent",
+    },
+    {
+      title: "Built For Your Exact Stack",
+      subtitle: "Custom architecture aligned to your workflows",
+      desc: "We engineer systems tailored to your specific tools and business workflows, avoiding bloated off-the-shelf software subscriptions you only half use.",
+      icon: ShieldCheck,
+      highlights: ["Zero bloated SaaS", "Custom API middleware", "Full ownership & control"],
+      accent: "from-emerald-500/10 via-emerald-500/5 to-transparent",
+    },
+  ];
+
   return (
-    <section className="relative bg-slate-900 py-24 md:py-32 text-white overflow-hidden border-t border-white/5">
-      {/* Background Subtle Accent Glows */}
-      <div
-        className="absolute top-0 left-1/4 h-80 w-80 rounded-full bg-blue-600/10 blur-[100px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-cyan-500/10 blur-[100px] pointer-events-none"
-        aria-hidden="true"
-      />
-
+    <section className="relative bg-[#F8FAFC] py-24 md:py-32 text-slate-900 overflow-hidden border-t border-slate-200/60">
       <Container className="relative z-10">
-        <Reveal className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-cyan-300">
-            <Sparkles size={13} className="text-cyan-400" />
-            <span>Why HASTAVA</span>
-          </div>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white">
-            Technology built to make your business run easier, not more complex.
-          </h2>
-        </Reveal>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <Reveal className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-blue-700">
+              <Sparkles size={13} className="text-blue-600" />
+              <span>Why HASTAVA</span>
+            </div>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-slate-900">
+              Technology built to make your business run easier, not more complex.
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+              We design software and automated systems that fit seamlessly into how your team actually works.
+            </p>
+          </Reveal>
+        </div>
 
-        {/* 4 Premium Feature Blocks */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PRINCIPLES.map((item, index) => {
+        {/* 2x2 Substantial Feature Grid */}
+        <div className="mt-14 grid gap-8 md:grid-cols-2">
+          {WHY_FEATURES.map((item, index) => {
             const Icon = item.icon;
             return (
               <Reveal
                 key={item.title}
                 delay={index * 0.08}
-                className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#081830]/85 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/50 hover:shadow-[0_15px_35px_rgba(6,182,212,0.12)]"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
               >
-                {/* Radial Glow Highlight */}
-                <div
-                  className={`absolute -top-12 -right-12 h-32 w-32 rounded-full bg-gradient-to-br ${item.gradient} opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 pointer-events-none`}
-                />
-
-                <div className="relative z-10">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-white/10 text-cyan-300 shadow-sm transition-transform duration-300 group-hover:scale-105">
-                    <Icon size={22} />
+                <div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200/80 text-blue-600 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                      <Icon size={26} strokeWidth={2} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+                        {item.title}
+                      </h3>
+                      <div className="mt-0.5 text-xs font-semibold text-blue-600">
+                        {item.subtitle}
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="mt-6 text-xl font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
-                    {item.title}
-                  </h3>
-                  <div className="mt-1 text-xs font-semibold text-cyan-400">
-                    {item.subtitle}
-                  </div>
-                  <p className="mt-3.5 text-xs leading-relaxed text-slate-300">
+                  <p className="mt-6 text-sm sm:text-base leading-relaxed text-slate-600">
                     {item.desc}
                   </p>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap gap-2">
+                  {item.highlights.map((hl) => (
+                    <span
+                      key={hl}
+                      className="rounded-lg border border-slate-200/70 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700"
+                    >
+                      {hl}
+                    </span>
+                  ))}
                 </div>
               </Reveal>
             );

@@ -52,12 +52,12 @@ const DISCOVERY_STEPS = [
 
 export default function ContactPage() {
   return (
-    <div className="overflow-x-hidden bg-[#061326] text-white">
-      {/* Hero Header */}
-      <section className="relative overflow-hidden py-20 md:py-28 border-b border-white/5">
-        <div className="hero-grid absolute inset-0 opacity-40 pointer-events-none" aria-hidden="true" />
+    <div className="overflow-x-hidden bg-white text-slate-900">
+      {/* Hero Header (Compact Luminous Dark Hero) */}
+      <section className="relative overflow-hidden hero-luminous text-white py-14 md:py-20 border-b border-white/10">
+        <div className="hero-grid absolute inset-0 opacity-25 pointer-events-none" aria-hidden="true" />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full bg-blue-600/15 blur-[140px] pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[500px] rounded-full bg-blue-500/15 blur-[120px] pointer-events-none"
           aria-hidden="true"
         />
 
@@ -67,31 +67,31 @@ export default function ContactPage() {
               <Sparkles size={13} className="text-cyan-400" />
               <span>Practical Discovery Session</span>
             </div>
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white text-balance">
+            <h1 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white text-balance">
               Have a process that feels unnecessarily manual?
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-slate-300">
+            <p className="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
               Tell us what happens today. We will help you understand the business problem and evaluate where custom automation creates the highest return.
             </p>
           </Reveal>
         </Container>
       </section>
 
-      {/* Main Content: 4-Step Process & Production Contact Form */}
-      <section className="relative py-20 md:py-28">
+      {/* Main Content: 4-Step Process & Production Contact Form (Light Surface) */}
+      <section className="relative bg-[#F8FAFC] py-14 md:py-20">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 items-start">
             {/* Left Column: 4-Step Discovery Blueprint & Direct Info */}
-            <div className="lg:col-span-5 space-y-8">
+            <div className="lg:col-span-5 space-y-6">
               <Reveal>
-                <div className="rounded-3xl border border-white/10 bg-[#081830]/80 p-6 sm:p-8 backdrop-blur-xl">
-                  <div className="text-xs font-bold uppercase tracking-widest text-cyan-400">
+                <div className="rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm">
+                  <div className="text-xs font-bold uppercase tracking-widest text-blue-600">
                     What to Expect
                   </div>
-                  <h2 className="mt-2 text-2xl font-bold tracking-tight text-white">
+                  <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900">
                     Our 4-Step Discovery Framework
                   </h2>
-                  <p className="mt-2 text-xs text-slate-300">
+                  <p className="mt-2 text-xs text-slate-600">
                     A focused, practical 20-minute conversation centered on your operational reality.
                   </p>
 
@@ -100,15 +100,15 @@ export default function ContactPage() {
                       const Icon = step.icon;
                       return (
                         <div key={step.num} className="flex items-start gap-4">
-                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-500/10 text-xs font-black text-cyan-300">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-100 bg-blue-50 text-xs font-black text-blue-600">
                             {step.num}
                           </div>
                           <div>
-                            <h3 className="text-sm font-bold text-white flex items-center gap-1.5">
+                            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
                               <span>{step.title}</span>
-                              <Icon size={13} className="text-cyan-400" />
+                              <Icon size={13} className="text-blue-600" />
                             </h3>
-                            <p className="mt-1 text-xs leading-relaxed text-slate-300">
+                            <p className="mt-1 text-xs leading-relaxed text-slate-600">
                               {step.desc}
                             </p>
                           </div>
@@ -122,20 +122,20 @@ export default function ContactPage() {
               {/* Guarantees & Response Time */}
               <Reveal delay={0.1}>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4.5 backdrop-blur-sm">
-                    <Clock size={18} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4.5 shadow-sm">
+                    <Clock size={18} className="text-blue-600 shrink-0 mt-0.5" />
                     <div>
-                      <div className="text-xs font-bold text-white">Fast Response</div>
-                      <p className="mt-1 text-[11px] text-slate-400">
+                      <div className="text-xs font-bold text-slate-900">Fast Response</div>
+                      <p className="mt-1 text-[11px] text-slate-600">
                         Direct engineer reply within 24 business hours.
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4.5 backdrop-blur-sm">
-                    <ShieldCheck size={18} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4.5 shadow-sm">
+                    <ShieldCheck size={18} className="text-blue-600 shrink-0 mt-0.5" />
                     <div>
-                      <div className="text-xs font-bold text-white">No Obligation</div>
-                      <p className="mt-1 text-[11px] text-slate-400">
+                      <div className="text-xs font-bold text-slate-900">No Obligation</div>
+                      <p className="mt-1 text-[11px] text-slate-600">
                         Honest feasibility & architectural guidance.
                       </p>
                     </div>
@@ -145,37 +145,37 @@ export default function ContactPage() {
 
               {/* Direct Reach Information */}
               <Reveal delay={0.15}>
-                <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-6 text-sm text-slate-300 space-y-3.5">
+                <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm text-sm text-slate-600 space-y-3.5">
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
                     Direct Contact
                   </div>
                   <div className="flex items-center gap-3">
-                    <Mail size={16} className="text-cyan-400 shrink-0" />
+                    <Mail size={16} className="text-blue-600 shrink-0" />
                     <a
                       href={`mailto:${siteConfig.email}`}
-                      className="transition-colors hover:text-cyan-300 text-white font-medium text-xs sm:text-sm"
+                      className="transition-colors hover:text-blue-600 text-slate-900 font-medium text-xs sm:text-sm"
                     >
                       {siteConfig.email}
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Phone size={16} className="text-cyan-400 shrink-0" />
+                    <Phone size={16} className="text-blue-600 shrink-0" />
                     <a
                       href={`tel:${siteConfig.phoneClean}`}
-                      className="transition-colors hover:text-cyan-300 text-white font-medium text-xs sm:text-sm"
+                      className="transition-colors hover:text-blue-600 text-slate-900 font-medium text-xs sm:text-sm"
                     >
                       {siteConfig.phone}
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
-                    <MapPin size={16} className="text-cyan-400 shrink-0" />
-                    <span className="text-xs sm:text-sm">{siteConfig.address.full}</span>
+                    <MapPin size={16} className="text-blue-600 shrink-0" />
+                    <span className="text-xs sm:text-sm text-slate-700">{siteConfig.address.full}</span>
                   </div>
                 </div>
               </Reveal>
             </div>
 
-            {/* Right Column: Production Contact Form */}
+            {/* Right Column: Elevated Production Contact Form Card */}
             <div className="lg:col-span-7">
               <Reveal delay={0.1}>
                 <ContactForm />

@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="overflow-x-hidden bg-[#061326] text-white">
+    <div className="overflow-x-hidden bg-white text-slate-900">
       {/* Hero Header */}
-      <section className="relative overflow-hidden py-24 md:py-32 border-b border-white/5">
-        <div className="hero-grid absolute inset-0 opacity-40 pointer-events-none" aria-hidden="true" />
+      <section className="relative overflow-hidden hero-luminous py-20 md:py-28 text-white border-b border-white/10">
+        <div className="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full bg-blue-600/15 blur-[140px] pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full bg-blue-500/20 blur-[140px] pointer-events-none"
           aria-hidden="true"
         />
 
@@ -31,7 +31,7 @@ export default function ServicesPage() {
             <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
               Practical AI and data solutions for modern businesses.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-slate-300">
+            <p className="mt-6 text-lg leading-relaxed text-slate-200">
               We design, build, and deploy custom automation infrastructure that eliminates manual busywork, integrates your tools, and scales with your team.
             </p>
           </Reveal>
@@ -39,7 +39,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative bg-[#F8FAFC] py-20 md:py-28 text-slate-900 border-b border-slate-200/60">
         <Container>
           <div className="grid gap-8 md:grid-cols-2">
             {SERVICES_DATA.map((service, index) => {
@@ -48,17 +48,19 @@ export default function ServicesPage() {
                 <Reveal
                   key={service.id}
                   delay={index * 0.08}
-                  className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-[#081830]/85 p-8 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(6,182,212,0.12)]"
+                  className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
                 >
                   <div>
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 shadow-sm transition-transform group-hover:scale-105">
-                      <Icon size={26} />
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200/80 text-blue-600 shadow-sm transition-transform group-hover:scale-105">
+                        <Icon size={28} />
+                      </div>
+                      <h2 className="text-2xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+                        {service.title}
+                      </h2>
                     </div>
 
-                    <h2 className="mt-6 text-2xl font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
-                      {service.title}
-                    </h2>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                    <p className="mt-6 text-sm sm:text-base leading-relaxed text-slate-600">
                       {service.description}
                     </p>
 
@@ -66,7 +68,7 @@ export default function ServicesPage() {
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-slate-300"
+                          className="rounded-lg border border-slate-200/70 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
                         >
                           {tag}
                         </span>
@@ -74,8 +76,8 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                    <Button href="/contact" size="sm" className="font-semibold">
+                  <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                    <Button href="/contact" size="sm" className="font-bold">
                       Discuss This Solution
                     </Button>
                   </div>
@@ -87,7 +89,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#061326] via-[#091f3c] to-[#061326] py-20 text-white border-t border-white/10">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#08172B] via-[#0B1F38] to-[#12345A] py-20 text-white border-t border-white/10">
         <Container className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">

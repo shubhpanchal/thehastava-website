@@ -9,38 +9,51 @@ import { Reveal } from "@/components/ui/reveal";
 import { SERVICES_DATA } from "@/config/services";
 
 export function ServicesSection() {
-  return (
-    <section id="solutions" className="relative bg-slate-900 py-24 md:py-32 text-white overflow-hidden border-t border-white/5">
-      {/* Subtle Background Glows */}
-      <div
-        className="absolute top-0 right-1/4 h-96 w-96 rounded-full bg-blue-600/10 blur-[100px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-cyan-500/10 blur-[100px] pointer-events-none"
-        aria-hidden="true"
-      />
+  const TECHNICAL_CUES: Record<string, { eyebrow: string; badge: string; steps: string[] }> = {
+    "ai-automation": {
+      eyebrow: "Operational Intelligence",
+      badge: "Deterministic Rules",
+      steps: ["Event Trigger", "AI Intent Scoring", "Validation Gate", "System Action"],
+    },
+    "data-analytics": {
+      eyebrow: "Data Infrastructure",
+      badge: "Single Source of Truth",
+      steps: ["Multi-source Data", "Automated ETL", "Schema Normalization", "Executive Views"],
+    },
+    "document-intelligence": {
+      eyebrow: "Unstructured Ingestion",
+      badge: "99%+ Field Accuracy",
+      steps: ["PDF / Email Intake", "LLM Entity Parser", "Business Rule Match", "ERP Sync"],
+    },
+    "business-systems": {
+      eyebrow: "Unified Software",
+      badge: "Bidirectional APIs",
+      steps: ["Legacy Tool Stacks", "API Middleware", "Role-based Portal", "Automated Sync"],
+    },
+  };
 
+  return (
+    <section id="solutions" className="relative bg-[#F8FAFC] py-24 md:py-32 text-slate-900 overflow-hidden border-t border-slate-200/60">
       <Container className="relative z-10">
         {/* Section Heading */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <Reveal className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-cyan-300">
-              <Sparkles size={12} className="text-cyan-300" />
+          <Reveal className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-blue-700">
+              <Sparkles size={12} className="text-blue-600" />
               What We Do
             </span>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-slate-900">
               Practical AI & data systems engineered for reliable operations.
             </h2>
-            <p className="mt-4 text-base text-slate-300">
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
               Start with one bottleneck. Automate it well. Then scale across your business.
             </p>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="shrink-0">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-cyan-300 hover:text-cyan-200 transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-600 hover:text-blue-700 transition-colors"
             >
               <span>Explore All Capabilities</span>
               <ArrowUpRight size={16} />
@@ -48,53 +61,83 @@ export function ServicesSection() {
           </Reveal>
         </div>
 
-        {/* 4 Pillar Service Cards */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {/* 2x2 Substantial Service Solution Cards */}
+        <div className="mt-14 grid gap-8 md:grid-cols-2">
           {SERVICES_DATA.map((service, index) => {
             const Icon = service.icon;
+            const techCue = TECHNICAL_CUES[service.id];
+
             return (
               <Reveal
                 key={service.id}
                 delay={index * 0.08}
-                className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#081830]/80 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50 hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)]"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
               >
-                {/* Radial Glow Highlight on Hover */}
-                <div
-                  className={`absolute -top-16 -right-16 h-36 w-36 rounded-full bg-gradient-to-br ${service.gradientGlow} opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 pointer-events-none`}
-                />
+                <div>
+                  {/* Top Row: Icon Badge + Category Eyebrow & Status Badge */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200/80 text-blue-600 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                        <Icon size={28} strokeWidth={2} />
+                      </div>
+                      <div>
+                        <span className="text-[11px] font-bold uppercase tracking-widest text-blue-600">
+                          {techCue.eyebrow}
+                        </span>
+                        <h3 className="text-2xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+                          {service.title}
+                        </h3>
+                      </div>
+                    </div>
 
-                <div className="relative z-10">
-                  {/* Large Icon Badge */}
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 via-cyan-500/15 to-indigo-500/20 border border-white/15 text-cyan-300 shadow-md transition-transform duration-300 group-hover:scale-105 group-hover:border-cyan-400/40">
-                    <Icon size={26} strokeWidth={2} />
+                    <span className="hidden sm:inline-flex rounded-full border border-blue-100 bg-blue-50/60 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-700">
+                      {techCue.badge}
+                    </span>
                   </div>
 
-                  {/* Title & Description */}
-                  <h3 className="mt-6 text-xl font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                  {/* Service Description */}
+                  <p className="mt-6 text-sm sm:text-base leading-relaxed text-slate-600">
                     {service.description}
                   </p>
+
+                  {/* Visual Technical Workflow Cue */}
+                  <div className="mt-6 rounded-2xl border border-slate-200/70 bg-slate-50/80 p-4">
+                    <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-3">
+                      <span>Execution Architecture</span>
+                      <span className="text-blue-600 font-mono text-[10px]">Active Flow</span>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {techCue.steps.map((step, sIdx) => (
+                        <div
+                          key={step}
+                          className="flex items-center gap-1.5 rounded-lg border border-slate-200/80 bg-white px-2.5 py-2 text-xs font-medium text-slate-700 shadow-2xs"
+                        >
+                          <span className="text-[10px] font-mono text-blue-600 font-bold">{sIdx + 1}.</span>
+                          <span className="truncate">{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="relative z-10 mt-8 pt-5 border-t border-white/10">
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
+                {/* Bottom Card Footer: Tags & Action */}
+                <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  {/* Capabilities Tags */}
+                  <div className="flex flex-wrap gap-1.5">
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md border border-white/5 bg-white/[0.04] px-2 py-0.5 text-[11px] font-medium text-slate-300"
+                        className="rounded-lg border border-slate-200/70 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Link */}
+                  {/* Direct Link */}
                   <Link
                     href="/services"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cyan-400 transition-all duration-200 group-hover:text-cyan-300 group-hover:translate-x-1"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 transition-all duration-200 group-hover:text-blue-700 group-hover:translate-x-1 shrink-0"
                   >
                     <span>Learn More</span>
                     <ArrowUpRight size={14} />

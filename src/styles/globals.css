@@ -38,9 +38,25 @@
 
 @utility container-custom {
   width: 100%;
-  max-width: 80rem;
+  max-width: 88rem; /* 1408px for desktop scale */
   margin-inline: auto;
-  padding-inline: 1.5rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 640px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1280px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility container-narrow {
+  width: 100%;
+  max-width: 68rem; /* 1088px for focused content */
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 640px) {
+    padding-inline: 2rem;
+  }
 }
 
 @utility section-eyebrow {
@@ -49,8 +65,8 @@
   gap: 0.5rem;
   color: #2563eb;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
@@ -60,10 +76,10 @@
 
 @utility section-title {
   color: #0f172a;
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.35rem, 4.2vw, 3.75rem);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
 @utility section-title-dark {
@@ -71,46 +87,50 @@
 }
 
 @utility section-copy {
-  color: #64748b;
-  font-size: 1.125rem;
-  line-height: 1.75;
+  color: #475569;
+  font-size: clamp(1.0625rem, 1.25vw, 1.25rem);
+  line-height: 1.65;
 }
 
 @utility mini-heading {
   color: #2563eb;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.8125rem;
+  font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 /* Background Grids & Technical Patterns */
+.hero-luminous {
+  background: linear-gradient(135deg, #08172B 0%, #0B1F38 50%, #12345A 100%);
+}
+
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
 }
 
 .hero-grid-subtle {
   background-image:
-    linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
   background-size: 36px 36px;
   mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
 }
 
 .radial-glow-blue {
-  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.18) 0%, rgba(6, 19, 38, 0) 70%);
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15) 0%, rgba(6, 19, 38, 0) 70%);
 }
 
 .radial-glow-cyan {
-  background: radial-gradient(circle at center, rgba(6, 182, 212, 0.15) 0%, rgba(6, 19, 38, 0) 70%);
+  background: radial-gradient(circle at center, rgba(6, 182, 212, 0.12) 0%, rgba(6, 19, 38, 0) 70%);
 }
 
 .radial-glow-indigo {
-  background: radial-gradient(circle at center, rgba(79, 70, 229, 0.16) 0%, rgba(6, 19, 38, 0) 70%);
+  background: radial-gradient(circle at center, rgba(79, 70, 229, 0.12) 0%, rgba(6, 19, 38, 0) 70%);
 }
 
 /* Micro Animations */

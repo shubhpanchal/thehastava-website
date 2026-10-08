@@ -11,32 +11,32 @@ import { FinalCta } from "@/components/marketing/final-cta";
 
 export default function HomePage() {
   return (
-    <div className="overflow-x-hidden bg-[#061326]">
-      {/* 01. Hero Section */}
+    <div className="overflow-x-hidden bg-white">
+      {/* 01. Hero Section (Dark Luminous) */}
       <Hero />
 
-      {/* 02. Value / Trust Band */}
+      {/* 02. Compact Value / Proof Band (Elevated White Transition) */}
       <ValueBand />
 
-      {/* 03. Industry Capability Strip */}
-      <IndustryStrip />
-
-      {/* 04. What We Do (Services) */}
+      {/* 03. Services (Light 2x2 High-Density Modules) */}
       <ServicesSection />
 
-      {/* 05. Solutions in Practice */}
+      {/* 04. Intelligence / Workflow Visualization (Dark Showcase) */}
       <SolutionsInPractice />
 
-      {/* 06. What Can We Automate? (Dynamic Workflow & Use-Cases) */}
+      {/* 05. What Can We Automate? (Light Interactive Studio Explorer) */}
       <AutomationUseCases />
 
-      {/* 07. How We Work (5-Stage Connected Process) */}
+      {/* 06. How We Work (Light 5-Stage Connected Process) */}
       <ProcessSection />
 
-      {/* 08. Why Businesses Choose Hastava */}
+      {/* 07. Why Businesses Choose Hastava (Light 2x2 Feature Modules) */}
       <WhyHastava />
 
-      {/* 09. Final Closing CTA */}
+      {/* 08. Industry Capability Strip (Light Substantial Strip) */}
+      <IndustryStrip />
+
+      {/* 09. Final Closing CTA (Dark Luminous) */}
       <FinalCta />
     </div>
   );

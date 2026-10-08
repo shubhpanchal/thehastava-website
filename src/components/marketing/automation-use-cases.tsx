@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Users,
@@ -11,6 +12,7 @@ import {
   Sparkles,
   CheckCircle2,
   Zap,
+  ArrowRight,
 } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { Reveal } from "@/components/ui/reveal";
@@ -19,9 +21,11 @@ interface UseCaseItem {
   id: string;
   title: string;
   shortDesc: string;
+  problem: string;
   icon: React.ComponentType<{ size?: number; className?: string }>;
   inputData: string[];
   automatedAction: string;
+  actionSteps: string[];
   deliveredOutcome: string[];
   exampleTools: string[];
 }
@@ -31,51 +35,61 @@ const USE_CASES_DATA: UseCaseItem[] = [
     id: "sales",
     title: "Sales & Inquiries",
     shortDesc: "Automate inquiry capture, RFQ routing, and CRM synchronization.",
+    problem: "Sales reps spend 10+ hours a week copying inbound email requests, manually typing lead details into CRMs, and assigning deals.",
     icon: Users,
-    inputData: ["Inbound Webforms", "Email RFQs", "LinkedIn Leads"],
-    automatedAction: "AI parses lead details, scores urgency, extracts line items, and creates deals in CRM.",
+    inputData: ["Inbound Webforms", "Email RFQs", "LinkedIn Inquiries", "Partner Referrals"],
+    automatedAction: "AI parses lead details, scores urgency, extracts line items, and creates structured deals in CRM instantly.",
+    actionSteps: ["Extract Buyer Intent", "Score Urgency & Value", "Deduplicate Contact", "Auto-Assign Rep"],
     deliveredOutcome: ["Instant 60-second response", "Zero missed RFQs", "Automated rep assignment"],
-    exampleTools: ["HubSpot / Salesforce", "Gmail / Outlook", "WhatsApp API"],
+    exampleTools: ["HubSpot / Salesforce", "Gmail / Outlook", "WhatsApp API", "PostgreSQL"],
   },
   {
     id: "operations",
     title: "Operations & Logistics",
     shortDesc: "Eliminate repetitive manual data entry, handoffs, and status checking.",
+    problem: "Ops teams manually re-key dispatch notes between ERPs, vendor portals, and spreadsheets, causing shipping delays and lost records.",
     icon: Workflow,
-    inputData: ["Vendor Packing Slips", "Dispatch Sheets", "Warehouse Logs"],
-    automatedAction: "Real-time parsing of dispatch data, automated stock matching, and multi-system updates.",
+    inputData: ["Vendor Packing Slips", "Dispatch Sheets", "Warehouse CSVs", "Carrier APIs"],
+    automatedAction: "Real-time parsing of dispatch data, automated stock matching, and multi-system updates with exception routing.",
+    actionSteps: ["Ingest Dispatch Logs", "Stock Line Matching", "Sync ERP Inventory", "Trigger Status Alerts"],
     deliveredOutcome: ["Zero double-entry errors", "Live dispatch visibility", "Automated exception alerts"],
-    exampleTools: ["Custom ERP", "Google Sheets", "Inventory Systems"],
+    exampleTools: ["Custom ERP", "Google Sheets", "Inventory Systems", "Webhook APIs"],
   },
   {
     id: "finance",
     title: "Finance & Accounting",
     shortDesc: "Extract invoice data, validate line items, and sync accounting records.",
+    problem: "Finance staff spend days reconciling supplier PDFs against purchase orders and manually drafting ledger entries.",
     icon: FileCheck,
-    inputData: ["Supplier PDFs", "Bank Statements", "Expense Receipts"],
-    automatedAction: "OCR + LLM extraction, PO matching, tax calculation, and automated ledger drafting.",
+    inputData: ["Supplier PDFs", "Bank Statements", "Expense Receipts", "Vendor Portals"],
+    automatedAction: "OCR + LLM extraction, PO matching, tax calculation, and automated ledger drafting with validation gates.",
+    actionSteps: ["PDF Table Extraction", "PO Number Matching", "Tax & Total Validation", "Draft Ledger Entry"],
     deliveredOutcome: ["90% faster reconciliation", "Audit-ready records", "Elimination of invoice backlog"],
-    exampleTools: ["QuickBooks / Xero", "Tally ERP", "Banking Portals"],
+    exampleTools: ["QuickBooks / Xero", "Tally ERP", "Banking Portals", "Stripe API"],
   },
   {
     id: "customer-service",
     title: "Customer Support",
     shortDesc: "Auto-classify requests, draft replies, and route complex tickets.",
+    problem: "Tier-1 agents get swamped answering repetitive status questions and manually categorizing high-volume support tickets.",
     icon: MessageSquare,
-    inputData: ["Support Inboxes", "Portal Tickets", "Customer Chat"],
-    automatedAction: "Categorize intent, fetch user history, draft contextual resolution, and route to specialist.",
+    inputData: ["Support Inboxes", "Portal Tickets", "Customer Chat", "Feedback Forms"],
+    automatedAction: "Categorize intent, fetch user history, draft contextual resolution, and route to the appropriate domain specialist.",
+    actionSteps: ["Intent Classification", "CRM History Lookup", "Draft AI Resolution", "Smart Specialist Escalation"],
     deliveredOutcome: ["Instant triage", "Reduced first-reply time", "Automated FAQ resolution"],
-    exampleTools: ["Zendesk / Freshdesk", "Intercom", "Internal Knowledge Base"],
+    exampleTools: ["Zendesk / Freshdesk", "Intercom", "Internal Knowledge Base", "Slack"],
   },
   {
     id: "management",
     title: "Executive & Management",
     shortDesc: "Aggregate operational metrics into consolidated real-time dashboards.",
+    problem: "Executives wait days for manual end-of-week spreadsheet rollups from different departments to understand basic operational KPIs.",
     icon: BarChart3,
-    inputData: ["Sales Pipelining", "Operational Delays", "Financial P&L"],
-    automatedAction: "Nightly automated data synchronization and AI summary generation delivered via email/Slack.",
+    inputData: ["Sales Pipelining", "Operational Delays", "Financial P&L", "Staff Utilization"],
+    automatedAction: "Nightly automated data synchronization and AI summary generation delivered directly via executive email and dashboard.",
+    actionSteps: ["Aggregate Multi-Source Data", "Calculate Core KPIs", "Generate Executive Summary", "Publish Live Views"],
     deliveredOutcome: ["Unified visibility", "Automated daily briefing", "Actionable bottleneck alerts"],
-    exampleTools: ["Looker Studio / Metabase", "Slack / Teams", "Executive Portal"],
+    exampleTools: ["Looker Studio / Metabase", "Slack / Teams", "Executive Portal", "PostgreSQL"],
   },
 ];
 
@@ -84,33 +98,25 @@ export function AutomationUseCases() {
   const activeItem = USE_CASES_DATA.find((c) => c.id === selectedCase) || USE_CASES_DATA[0];
 
   return (
-    <section className="relative bg-[#08172e] py-24 md:py-32 text-white overflow-hidden border-t border-white/5">
-      {/* Dynamic Ambient Background Glows */}
-      <div
-        className="absolute top-1/2 -right-40 h-[450px] w-[450px] rounded-full bg-blue-600/15 blur-[120px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-10 h-[350px] w-[350px] rounded-full bg-cyan-500/10 blur-[100px] pointer-events-none"
-        aria-hidden="true"
-      />
-
+    <section className="relative bg-[#F8FAFC] py-24 md:py-32 text-slate-900 overflow-hidden border-t border-slate-200/60">
       <Container className="relative z-10">
-        <Reveal className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-cyan-300">
-            <Sparkles size={13} className="text-cyan-400" />
-            <span>Operational Solutions</span>
-          </div>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white">
-            What Can We Automate?
-          </h2>
-          <p className="mt-4 text-base text-slate-300">
-            Target the repetitive, friction-heavy workflows that cost your teams hours every week.
-          </p>
-        </Reveal>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <Reveal className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-blue-700">
+              <Sparkles size={13} className="text-blue-600" />
+              <span>Operational Solutions Explorer</span>
+            </div>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-slate-900">
+              What Can We Automate?
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+              Target the repetitive, friction-heavy workflows that cost your teams hours every week. Explore common transformation architectures below.
+            </p>
+          </Reveal>
+        </div>
 
-        {/* Dynamic Department Tabs / Switcher */}
-        <div className="mt-12 grid grid-cols-2 gap-2 sm:grid-cols-5">
+        {/* Dynamic Department Tabs / Switcher Bar */}
+        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-5">
           {USE_CASES_DATA.map((item) => {
             const Icon = item.icon;
             const isSelected = selectedCase === item.id;
@@ -118,117 +124,163 @@ export function AutomationUseCases() {
               <button
                 key={item.id}
                 onClick={() => setSelectedCase(item.id)}
-                className={`flex flex-col items-center sm:items-start gap-2.5 rounded-2xl border p-4 text-left transition-all duration-300 ${
+                className={`flex flex-col items-center sm:items-start gap-3 rounded-2xl border p-4.5 text-left transition-all duration-300 ${
                   isSelected
-                    ? "border-cyan-400 bg-[#0c2447] shadow-[0_10px_30px_rgba(6,182,212,0.18)]"
-                    : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
+                    ? "border-blue-600 bg-blue-600 text-white shadow-xl shadow-blue-600/25 scale-[1.02]"
+                    : "border-slate-200/90 bg-white hover:border-blue-300 hover:bg-slate-50/80 text-slate-800 shadow-2xs"
                 }`}
               >
                 <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${
+                  className={`flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${
                     isSelected
-                      ? "bg-cyan-400 text-slate-950 font-bold"
-                      : "bg-blue-500/15 text-cyan-300"
+                      ? "bg-white/20 text-white font-bold"
+                      : "bg-blue-50 text-blue-600 border border-blue-100"
                   }`}
                 >
-                  <Icon size={18} />
+                  <Icon size={20} />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white tracking-tight">{item.title}</h3>
+                  <h3 className={`text-sm font-bold tracking-tight ${isSelected ? "text-white" : "text-slate-900"}`}>
+                    {item.title}
+                  </h3>
                 </div>
               </button>
             );
           })}
         </div>
 
-        {/* Dynamic Interactive Detail Canvas */}
+        {/* Large Featured Workflow Canvas */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeItem.id}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="mt-8 overflow-hidden rounded-3xl border border-white/15 bg-[#0a1e3b]/80 p-6 md:p-8 backdrop-blur-xl shadow-2xl"
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.35 }}
+            className="mt-8 overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-8 md:p-12 shadow-xl shadow-slate-200/50"
           >
-            <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-              {/* Left Overview */}
-              <div className="lg:col-span-5">
-                <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
-                  Target Automation Area
+            {/* Top Overview & The Manual Problem */}
+            <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 border-b border-slate-100 pb-8">
+              <div className="max-w-2xl">
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
+                  Department Focus
                 </span>
-                <h3 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight text-white">
+                <h3 className="mt-2 text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">
                   {activeItem.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                <p className="mt-3 text-base text-slate-600 leading-relaxed">
                   {activeItem.shortDesc}
                 </p>
-
-                <div className="mt-6 space-y-2 border-t border-white/10 pt-5">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    Common Connected Tools
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {activeItem.exampleTools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="rounded-lg border border-white/10 bg-slate-900/60 px-2.5 py-1 text-xs font-medium text-cyan-200"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
 
-              {/* Right Workflow Transformation Architecture */}
-              <div className="lg:col-span-7 space-y-4">
-                {/* 1. Input */}
-                <div className="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    Input Data Streams
+              {/* The Problem Alert Banner */}
+              <div className="rounded-2xl border border-amber-200/80 bg-amber-50/60 p-5 max-w-lg shrink-0">
+                <div className="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-amber-500 animate-ping" />
+                  <span>The Manual Bottleneck</span>
+                </div>
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-amber-950 font-medium">
+                  {activeItem.problem}
+                </p>
+              </div>
+            </div>
+
+            {/* 3-Column Transformation Architecture Flow */}
+            <div className="mt-8 grid gap-6 md:grid-cols-3 items-stretch">
+              {/* 1. Input Sources */}
+              <div className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-slate-50/90 p-6">
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-4">
+                    1. Input Data Streams
                   </div>
-                  <div className="mt-2 flex flex-wrap gap-2">
+                  <div className="space-y-2">
                     {activeItem.inputData.map((inData) => (
-                      <span
-                        key={inData}
-                        className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-200"
-                      >
-                        {inData}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 2. Automated Action */}
-                <div className="rounded-xl border border-cyan-400/40 bg-cyan-950/30 p-4">
-                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-cyan-300">
-                    <Zap size={13} className="text-cyan-400 animate-pulse" />
-                    <span>HASTAVA Intelligence Transformation</span>
-                  </div>
-                  <p className="mt-1.5 text-xs md:text-sm font-medium leading-relaxed text-cyan-100">
-                    {activeItem.automatedAction}
-                  </p>
-                </div>
-
-                {/* 3. Delivered Outcome */}
-                <div className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-4">
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">
-                    Delivered Business Outcomes
-                  </div>
-                  <div className="mt-2 grid gap-1.5 sm:grid-cols-3">
-                    {activeItem.deliveredOutcome.map((outcome) => (
                       <div
-                        key={outcome}
-                        className="flex items-center gap-1.5 text-xs font-medium text-emerald-200"
+                        key={inData}
+                        className="flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-xs font-medium text-slate-800 shadow-2xs"
                       >
-                        <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
-                        <span className="truncate">{outcome}</span>
+                        <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+                        <span>{inData}</span>
                       </div>
                     ))}
                   </div>
                 </div>
+                <div className="mt-6 pt-4 border-t border-slate-200/60 text-[11px] text-slate-500 font-mono">
+                  Multi-channel ingestion
+                </div>
               </div>
+
+              {/* 2. HASTAVA Automated Engine */}
+              <div className="flex flex-col justify-between rounded-2xl border border-blue-200 bg-blue-50/70 p-6 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-700 mb-4">
+                    <Zap size={14} className="text-blue-600 animate-pulse" />
+                    <span>2. HASTAVA Automated Logic</span>
+                  </div>
+                  <div className="space-y-2">
+                    {activeItem.actionSteps.map((step, idx) => (
+                      <div
+                        key={step}
+                        className="flex items-center gap-2 rounded-xl border border-blue-200/80 bg-white px-3.5 py-2.5 text-xs font-semibold text-blue-950 shadow-2xs"
+                      >
+                        <span className="text-[10px] font-mono text-blue-600 font-bold">{idx + 1}.</span>
+                        <span>{step}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <p className="mt-6 pt-4 border-t border-blue-200/60 text-xs text-blue-900 leading-relaxed font-medium">
+                  {activeItem.automatedAction}
+                </p>
+              </div>
+
+              {/* 3. Delivered Business Impact */}
+              <div className="flex flex-col justify-between rounded-2xl border border-emerald-200 bg-emerald-50/70 p-6 shadow-sm">
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 mb-4">
+                    3. Delivered Business Impact
+                  </div>
+                  <div className="space-y-2.5">
+                    {activeItem.deliveredOutcome.map((outcome) => (
+                      <div
+                        key={outcome}
+                        className="flex items-start gap-2 rounded-xl border border-emerald-200/80 bg-white p-3 text-xs font-semibold text-emerald-950 shadow-2xs"
+                      >
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{outcome}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-6 pt-4 border-t border-emerald-200/60 text-[11px] font-mono text-emerald-800">
+                  Deterministic & Scalable
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Tools & Action Bar */}
+            <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mr-2">
+                  Connected Tools:
+                </span>
+                {activeItem.exampleTools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-lg border border-slate-200/80 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-blue-600 transition-colors shrink-0"
+              >
+                <span>Automate This Workflow</span>
+                <ArrowRight size={14} />
+              </Link>
             </div>
           </motion.div>
         </AnimatePresence>

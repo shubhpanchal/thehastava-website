@@ -9,11 +9,11 @@ import {
   Layers,
   ArrowRight,
   Sparkles,
-  Zap,
 } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
+import { ArchitectureWorkflow } from "./workflows/architecture-workflow";
 
 const PRACTICAL_SOLUTIONS = [
   {
@@ -130,26 +130,7 @@ export function SolutionsInPractice() {
                   </p>
 
                   {/* Visual Step Pipeline Flow */}
-                  <div className="mt-6 rounded-2xl border border-white/10 bg-slate-950/60 p-4">
-                    <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-cyan-400 mb-3">
-                      <div className="flex items-center gap-1.5">
-                        <Zap size={13} className="text-cyan-400 animate-pulse" />
-                        <span>Transformation Pipeline</span>
-                      </div>
-                      <span className="text-slate-400 font-mono text-[10px]">End-to-End</span>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2">
-                      {sol.steps.map((step, sIdx) => (
-                        <div
-                          key={step}
-                          className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-2 text-xs text-slate-200"
-                        >
-                          <span className="text-[11px] font-mono text-cyan-400 font-bold shrink-0">{sIdx + 1}.</span>
-                          <span className="leading-snug">{step}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <ArchitectureWorkflow patternNum={sol.num} />
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">

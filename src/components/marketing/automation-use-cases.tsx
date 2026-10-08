@@ -13,9 +13,13 @@ import {
   CheckCircle2,
   Zap,
   ArrowRight,
+  FileText,
+  Mail,
+  Table2,
 } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { Reveal } from "@/components/ui/reveal";
+import { DepartmentWorkflow } from "./workflows/department-workflow";
 
 interface UseCaseItem {
   id: string;
@@ -185,78 +189,30 @@ export function AutomationUseCases() {
               </div>
             </div>
 
-            {/* 3-Column Transformation Architecture Flow */}
-            <div className="mt-8 grid gap-6 md:grid-cols-3 items-stretch">
-              {/* 1. Input Sources */}
-              <div className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-slate-50/90 p-6">
-                <div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-4">
-                    1. Input Data Streams
-                  </div>
-                  <div className="space-y-2">
-                    {activeItem.inputData.map((inData) => (
-                      <div
-                        key={inData}
-                        className="flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-xs font-medium text-slate-800 shadow-2xs"
-                      >
-                        <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-                        <span>{inData}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-200/60 text-[11px] text-slate-500 font-mono">
-                  Multi-channel ingestion
-                </div>
-              </div>
-
-              {/* 2. HASTAVA Automated Engine */}
-              <div className="flex flex-col justify-between rounded-2xl border border-blue-200 bg-blue-50/70 p-6 shadow-sm">
-                <div>
-                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-blue-700 mb-4">
-                    <Zap size={14} className="text-blue-600 animate-pulse" />
-                    <span>2. HASTAVA Automated Logic</span>
-                  </div>
-                  <div className="space-y-2">
-                    {activeItem.actionSteps.map((step, idx) => (
-                      <div
-                        key={step}
-                        className="flex items-center gap-2 rounded-xl border border-blue-200/80 bg-white px-3.5 py-2.5 text-xs font-semibold text-blue-950 shadow-2xs"
-                      >
-                        <span className="text-[10px] font-mono text-blue-600 font-bold">{idx + 1}.</span>
-                        <span>{step}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <p className="mt-6 pt-4 border-t border-blue-200/60 text-xs text-blue-900 leading-relaxed font-medium">
-                  {activeItem.automatedAction}
-                </p>
-              </div>
-
-              {/* 3. Delivered Business Impact */}
-              <div className="flex flex-col justify-between rounded-2xl border border-emerald-200 bg-emerald-50/70 p-6 shadow-sm">
-                <div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 mb-4">
-                    3. Delivered Business Impact
-                  </div>
-                  <div className="space-y-2.5">
-                    {activeItem.deliveredOutcome.map((outcome) => (
-                      <div
-                        key={outcome}
-                        className="flex items-start gap-2 rounded-xl border border-emerald-200/80 bg-white p-3 text-xs font-semibold text-emerald-950 shadow-2xs"
-                      >
-                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{outcome}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-6 pt-4 border-t border-emerald-200/60 text-[11px] font-mono text-emerald-800">
-                  Deterministic & Scalable
-                </div>
-              </div>
-            </div>
+            {/* Interactive 3-Stage Workflow Pipeline */}
+            <DepartmentWorkflow
+              data={{
+                id: activeItem.id,
+                title: activeItem.title,
+                shortDesc: activeItem.shortDesc,
+                problem: activeItem.problem,
+                inputData: activeItem.inputData.map((label, idx) => ({
+                  label,
+                  icon: idx === 0 ? FileText : idx === 1 ? Mail : idx === 2 ? Table2 : Zap,
+                })),
+                actionSteps: activeItem.actionSteps.map((step, idx) => ({
+                  step: `0${idx + 1}`,
+                  label: step,
+                  desc: idx === 0 ? "Real-time parsing & intake" : idx === 1 ? "Deterministic rule validation" : idx === 2 ? "System state normalization" : "Automated trigger execution",
+                })),
+                deliveredOutcome: activeItem.deliveredOutcome.map((label, idx) => ({
+                  label,
+                  desc: idx === 0 ? "Immediate SLA compliance" : idx === 1 ? "Zero manual copy-paste" : "Autonomous system sync",
+                  icon: idx === 0 ? CheckCircle2 : idx === 1 ? Zap : BarChart3,
+                })),
+                exampleTools: activeItem.exampleTools,
+              }}
+            />
 
             {/* Bottom Tools & Action Bar */}
             <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -288,3 +244,4 @@ export function AutomationUseCases() {
     </section>
   );
 }
+

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 
 import { SERVICES_DATA } from "@/config/services";
 import { ValueBand } from "./value-band";
+import { ServiceMiniWorkflow } from "./workflows/service-mini-workflow";
 
 export function ServicesSection() {
   const TECHNICAL_CUES: Record<string, { eyebrow: string; badge: string; steps: string[] }> = {
@@ -105,23 +106,7 @@ export function ServicesSection() {
                   </p>
 
                   {/* Visual Technical Workflow Cue */}
-                  <div className="mt-6 rounded-2xl border border-slate-200/70 bg-slate-50/80 p-4">
-                    <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-3">
-                      <span>Execution Architecture</span>
-                      <span className="text-blue-600 font-mono text-[10px]">Active Flow</span>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2">
-                      {techCue.steps.map((step, sIdx) => (
-                        <div
-                          key={step}
-                          className="flex items-center gap-2 rounded-lg border border-slate-200/80 bg-white px-2.5 py-2 text-xs font-medium text-slate-700 shadow-2xs"
-                        >
-                          <span className="text-[10px] font-mono text-blue-600 font-bold shrink-0">{sIdx + 1}.</span>
-                          <span className="leading-snug">{step}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <ServiceMiniWorkflow serviceId={service.id} />
                 </div>
 
                 {/* Bottom Card Footer: Tags & Action */}

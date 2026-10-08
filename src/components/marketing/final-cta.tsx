@@ -9,7 +9,7 @@ import { trackEvent } from "@/lib/analytics";
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#08172B] via-[#0B1F38] to-[#12345A] py-24 text-white md:py-32 border-t border-white/10">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#08172B] via-[#0B1F38] to-[#12345A] py-16 md:py-20 lg:py-24 text-white border-t border-white/10">
       {/* Background Decorative Tech Grid & Multi-Layered Glows */}
       <div className="hero-grid absolute inset-0 opacity-25 pointer-events-none" aria-hidden="true" />
       <div

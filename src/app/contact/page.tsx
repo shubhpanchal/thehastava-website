@@ -54,7 +54,7 @@ export default function ContactPage() {
   return (
     <div className="overflow-x-hidden bg-white text-slate-900">
       {/* Hero Header (Compact Luminous Dark Hero) */}
-      <section className="relative overflow-hidden hero-luminous text-white py-14 md:py-20 border-b border-white/10">
+      <section className="relative overflow-hidden hero-luminous text-white pt-10 pb-12 md:pt-14 md:pb-16 border-b border-white/10">
         <div className="hero-grid absolute inset-0 opacity-25 pointer-events-none" aria-hidden="true" />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[500px] rounded-full bg-blue-500/15 blur-[120px] pointer-events-none"
@@ -67,10 +67,10 @@ export default function ContactPage() {
               <Sparkles size={13} className="text-cyan-400" />
               <span>Practical Discovery Session</span>
             </div>
-            <h1 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white text-balance">
+            <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-white text-balance">
               Have a process that feels unnecessarily manual?
             </h1>
-            <p className="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
+            <p className="mt-3 text-base leading-relaxed text-slate-300 sm:text-lg">
               Tell us what happens today. We will help you understand the business problem and evaluate where custom automation creates the highest return.
             </p>
           </Reveal>
@@ -78,7 +78,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Content: 4-Step Process & Production Contact Form (Light Surface) */}
-      <section className="relative bg-[#F8FAFC] py-14 md:py-20">
+      <section className="relative bg-[#F8FAFC] pt-8 pb-14 md:pt-10 md:pb-18 lg:pb-20">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 items-start">
             {/* Left Column: 4-Step Discovery Blueprint & Direct Info */}

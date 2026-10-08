@@ -34,7 +34,7 @@ const PROOF_POINTS = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden hero-luminous text-white pt-10 pb-20 md:pt-16 md:pb-28 lg:pt-20 lg:pb-32">
+    <section className="relative overflow-hidden hero-luminous text-white pt-8 pb-12 md:pt-10 md:pb-14 lg:pt-12 lg:pb-16">
       {/* Layered Background System with Restrained Grid */}
       <div className="hero-grid absolute inset-0 opacity-25 pointer-events-none" aria-hidden="true" />
       
@@ -53,9 +53,9 @@ export function Hero() {
       />
 
       <Container className="relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 xl:gap-20">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-10 xl:gap-14">
           {/* Left Column: Messaging & CTAs */}
-          <Reveal className="max-w-3xl">
+          <Reveal className="w-full min-w-0">
             {/* Pill Eyebrow */}
             <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-cyan-400/30 bg-cyan-950/50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-md shadow-lg shadow-cyan-950/50">
               <span className="flex h-2 w-2 relative">
@@ -66,7 +66,7 @@ export function Hero() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-balance text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl lg:text-6xl xl:text-[4.35rem] leading-[1.06]">
+            <h1 className="text-balance text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl lg:text-5xl xl:text-[4.15rem] leading-[1.08]">
               Turn Manual Work{" "}
               <span className="block bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-300 bg-clip-text text-transparent">
                 Into Growth.
@@ -74,7 +74,7 @@ export function Hero() {
             </h1>
 
             {/* Supporting Subtext */}
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg sm:leading-8">
               AI, data, and automation solutions that eliminate repetitive work, connect your systems, and help your business operate faster.
             </p>
 
@@ -101,17 +101,17 @@ export function Hero() {
             </div>
 
             {/* 3 Value Proof Points Info-Band */}
-            <div className="mt-12 grid grid-cols-1 gap-3.5 border-t border-white/10 pt-8 sm:grid-cols-3 sm:gap-4">
+            <div className="mt-8 grid grid-cols-1 gap-3 border-t border-white/10 pt-6 sm:grid-cols-3 sm:gap-3.5">
               {PROOF_POINTS.map((point) => {
                 const Icon = point.icon;
                 return (
                   <div
                     key={point.title}
-                    className="group relative rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-md transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.08]"
+                    className="group relative rounded-2xl border border-white/10 bg-white/[0.04] p-3.5 sm:p-4 backdrop-blur-md transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.08]"
                   >
                     <div className="flex items-center gap-2.5">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-500/20 text-cyan-300 transition-colors group-hover:bg-cyan-400/20">
-                        <Icon size={18} />
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-blue-500/20 text-cyan-300 transition-colors group-hover:bg-cyan-400/20">
+                        <Icon size={16} />
                       </div>
                       <div className="min-w-0">
                         <h2 className="text-xs font-bold text-white tracking-tight leading-snug">
@@ -119,7 +119,7 @@ export function Hero() {
                         </h2>
                       </div>
                     </div>
-                    <p className="mt-2 text-xs leading-relaxed text-slate-300">
+                    <p className="mt-2 text-[11px] leading-relaxed text-slate-300">
                       {point.desc}
                     </p>
                   </div>
@@ -129,7 +129,7 @@ export function Hero() {
           </Reveal>
 
           {/* Right Column: Hero Workflow Visual */}
-          <div className="w-full">
+          <div className="w-full min-w-0 lg:pt-1">
             <HeroVisual />
           </div>
         </div>

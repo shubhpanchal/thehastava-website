@@ -43,10 +43,10 @@ export function HeroVisual() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative overflow-hidden rounded-3xl border border-white/15 bg-[#08172e]/85 p-5 sm:p-7 shadow-[0_25px_80px_rgba(0,0,0,0.55)] backdrop-blur-2xl"
+        className="relative overflow-hidden rounded-3xl border border-white/15 bg-[#08172e]/85 p-4 sm:p-5 md:p-6 shadow-[0_25px_80px_rgba(0,0,0,0.55)] backdrop-blur-2xl"
       >
         {/* Top Header Bar */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="flex items-center justify-between border-b border-white/10 pb-3">
           <div className="flex items-center gap-2.5">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
@@ -66,13 +66,13 @@ export function HeroVisual() {
         </div>
 
         {/* 3-Stage Pipeline Diagram */}
-        <div className="mt-5 space-y-3.5">
+        <div className="mt-4 space-y-2.5">
           {/* STAGE 1: EXISTING BUSINESS DATA (MANUAL INPUTS) */}
           <motion.div
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className={`rounded-2xl border p-4 transition-all duration-500 ${
+            className={`rounded-2xl border p-3 sm:p-3.5 transition-all duration-500 ${
               activeStep === 0
                 ? "border-blue-400/60 bg-blue-500/10 shadow-lg shadow-blue-500/10"
                 : "border-white/10 bg-white/[0.03] hover:border-white/20"
@@ -87,25 +87,25 @@ export function HeroVisual() {
                   Existing Business Data & Manual Inputs
                 </span>
               </div>
-              <span className="text-[11px] font-mono text-slate-400">4 Sources</span>
+              <span className="text-[11px] font-mono text-slate-400 shrink-0">4 Sources</span>
             </div>
 
-            <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2">
               <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-slate-900/60 px-3 py-2 text-xs text-slate-300 transition-colors hover:border-cyan-400/40">
-                <FileText size={15} className="text-cyan-400 shrink-0" />
-                <span className="truncate">PDFs & Docs</span>
+                <FileText size={14} className="text-cyan-400 shrink-0" />
+                <span className="whitespace-nowrap font-medium">PDFs & Docs</span>
               </div>
               <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-slate-900/60 px-3 py-2 text-xs text-slate-300 transition-colors hover:border-blue-400/40">
-                <Mail size={15} className="text-blue-400 shrink-0" />
-                <span className="truncate">Emails</span>
+                <Mail size={14} className="text-blue-400 shrink-0" />
+                <span className="whitespace-nowrap font-medium">Emails</span>
               </div>
               <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-slate-900/60 px-3 py-2 text-xs text-slate-300 transition-colors hover:border-indigo-400/40">
-                <Table2 size={15} className="text-indigo-400 shrink-0" />
-                <span className="truncate">Spreadsheets</span>
+                <Table2 size={14} className="text-indigo-400 shrink-0" />
+                <span className="whitespace-nowrap font-medium">Spreadsheets</span>
               </div>
               <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-slate-900/60 px-3 py-2 text-xs text-slate-300 transition-colors hover:border-cyan-300/40">
-                <Layers size={15} className="text-cyan-300 shrink-0" />
-                <span className="truncate">Legacy ERP</span>
+                <Layers size={14} className="text-cyan-300 shrink-0" />
+                <span className="whitespace-nowrap font-medium">Legacy ERP</span>
               </div>
             </div>
           </motion.div>
@@ -113,8 +113,8 @@ export function HeroVisual() {
           {/* GLOWING CONNECTOR 1 */}
           <div className="relative flex items-center justify-center py-0.5">
             <div className="absolute inset-x-12 top-1/2 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
-            <div className="relative flex items-center gap-2 rounded-full border border-cyan-400/40 bg-[#07172f] px-3.5 py-1 text-[11px] font-semibold text-cyan-300 shadow-md shadow-cyan-500/10">
-              <Zap size={13} className="text-cyan-400 animate-pulse" />
+            <div className="relative flex items-center gap-2 rounded-full border border-cyan-400/40 bg-[#07172f] px-3.5 py-1 text-[10px] font-semibold text-cyan-300 shadow-md shadow-cyan-500/10">
+              <Zap size={12} className="text-cyan-400 animate-pulse" />
               <span>Ingestion & Real-time Extraction</span>
             </div>
           </div>
@@ -124,7 +124,7 @@ export function HeroVisual() {
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className={`relative overflow-hidden rounded-2xl border p-4.5 transition-all duration-500 ${
+            className={`relative overflow-hidden rounded-2xl border p-3.5 transition-all duration-500 ${
               activeStep === 1
                 ? "border-cyan-400/80 bg-gradient-to-r from-[#0d274f] via-[#091f3c] to-[#0d274f] shadow-xl shadow-cyan-500/20"
                 : "border-blue-400/40 bg-gradient-to-r from-[#0a203f] via-[#07172d] to-[#0a203f]"
@@ -133,42 +133,43 @@ export function HeroVisual() {
             {/* Animated accent gradient line */}
             <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-indigo-500 via-cyan-400 to-blue-500" />
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-500 via-blue-600 to-cyan-400 text-white shadow-md shadow-blue-500/30">
-                  <Cpu size={20} />
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-500 via-blue-600 to-cyan-400 text-white shadow-md shadow-blue-500/30">
+                  <Cpu size={18} />
                 </div>
                 <div>
-                  <div className="flex items-center gap-2">
-                    <h4 className="text-sm font-bold text-white tracking-wide">
+                  <div className="flex items-center gap-1.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-white tracking-tight whitespace-nowrap">
                       HASTAVA Intelligence & Rules Engine
                     </h4>
-                    <Sparkles size={14} className="text-cyan-300 animate-spin-slow" />
-                  </div>
-                  <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px] text-cyan-200">
-                    <span className="rounded bg-white/10 px-1.5 py-0.5">AI Extraction</span>
-                    <span>•</span>
-                    <span className="rounded bg-white/10 px-1.5 py-0.5">Validation</span>
-                    <span>•</span>
-                    <span className="rounded bg-white/10 px-1.5 py-0.5">Business Logic</span>
-                    <span>•</span>
-                    <span className="rounded bg-white/10 px-1.5 py-0.5">Orchestration</span>
+                    <Sparkles size={13} className="text-cyan-300 shrink-0 animate-spin-slow" />
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 text-[11px] font-mono text-cyan-300 sm:self-center">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+              <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-mono text-emerald-300 shrink-0">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Processing</span>
               </div>
+            </div>
+
+            <div className="mt-2.5 flex flex-wrap items-center gap-1.5 text-[10px] text-cyan-200">
+              <span className="rounded bg-white/10 px-2 py-0.5 font-medium whitespace-nowrap">AI Extraction</span>
+              <span className="text-cyan-400/50">•</span>
+              <span className="rounded bg-white/10 px-2 py-0.5 font-medium whitespace-nowrap">Validation</span>
+              <span className="text-cyan-400/50">•</span>
+              <span className="rounded bg-white/10 px-2 py-0.5 font-medium whitespace-nowrap">Business Logic</span>
+              <span className="text-cyan-400/50">•</span>
+              <span className="rounded bg-white/10 px-2 py-0.5 font-medium whitespace-nowrap">Orchestration</span>
             </div>
           </motion.div>
 
           {/* GLOWING CONNECTOR 2 */}
           <div className="relative flex items-center justify-center py-0.5">
             <div className="absolute inset-x-12 top-1/2 h-[1px] bg-gradient-to-r from-transparent via-blue-400/40 to-transparent" />
-            <div className="relative flex items-center gap-2 rounded-full border border-blue-400/40 bg-[#07172f] px-3.5 py-1 text-[11px] font-semibold text-blue-300 shadow-md shadow-blue-500/10">
-              <ArrowDown size={13} className="text-blue-400" />
+            <div className="relative flex items-center gap-2 rounded-full border border-blue-400/40 bg-[#07172f] px-3.5 py-1 text-[10px] font-semibold text-blue-300 shadow-md shadow-blue-500/10">
+              <ArrowDown size={12} className="text-blue-400" />
               <span>Automated Routing & Output Delivery</span>
             </div>
           </div>
@@ -178,7 +179,7 @@ export function HeroVisual() {
             initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.45 }}
-            className={`rounded-2xl border p-4 transition-all duration-500 ${
+            className={`rounded-2xl border p-3 sm:p-3.5 transition-all duration-500 ${
               activeStep === 2
                 ? "border-emerald-400/60 bg-emerald-500/10 shadow-lg shadow-emerald-500/10"
                 : "border-white/10 bg-white/[0.03] hover:border-white/20"
@@ -193,36 +194,36 @@ export function HeroVisual() {
                   Automated Business Outcomes
                 </span>
               </div>
-              <span className="text-[11px] font-mono text-emerald-400">100% Verified</span>
+              <span className="text-[11px] font-mono text-emerald-400 shrink-0">100% Verified</span>
             </div>
 
-            <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-5">
-              <div className="flex items-center gap-1.5 rounded-xl border border-emerald-500/20 bg-emerald-950/40 px-2.5 py-2 text-xs text-emerald-300">
+            <div className="mt-2.5 flex flex-wrap gap-2">
+              <div className="flex items-center gap-1.5 rounded-xl border border-emerald-500/20 bg-emerald-950/40 px-3 py-2 text-xs text-emerald-300">
                 <Database size={14} className="shrink-0" />
-                <span className="truncate font-medium">Clean Data</span>
+                <span className="whitespace-nowrap font-medium">Clean Data</span>
               </div>
-              <div className="flex items-center gap-1.5 rounded-xl border border-blue-500/20 bg-blue-950/40 px-2.5 py-2 text-xs text-blue-300">
+              <div className="flex items-center gap-1.5 rounded-xl border border-blue-500/20 bg-blue-950/40 px-3 py-2 text-xs text-blue-300">
                 <Workflow size={14} className="shrink-0" />
-                <span className="truncate font-medium">Workflows</span>
+                <span className="whitespace-nowrap font-medium">Workflows</span>
               </div>
-              <div className="flex items-center gap-1.5 rounded-xl border border-indigo-500/20 bg-indigo-950/40 px-2.5 py-2 text-xs text-indigo-300">
+              <div className="flex items-center gap-1.5 rounded-xl border border-indigo-500/20 bg-indigo-950/40 px-3 py-2 text-xs text-indigo-300">
                 <BarChart3 size={14} className="shrink-0" />
-                <span className="truncate font-medium">Dashboards</span>
+                <span className="whitespace-nowrap font-medium">Dashboards</span>
               </div>
-              <div className="flex items-center gap-1.5 rounded-xl border border-cyan-500/20 bg-cyan-950/40 px-2.5 py-2 text-xs text-cyan-300">
+              <div className="flex items-center gap-1.5 rounded-xl border border-cyan-500/20 bg-cyan-950/40 px-3 py-2 text-xs text-cyan-300">
                 <Bell size={14} className="shrink-0" />
-                <span className="truncate font-medium">Alerts</span>
+                <span className="whitespace-nowrap font-medium">Alerts</span>
               </div>
-              <div className="col-span-2 sm:col-span-1 flex items-center justify-center sm:justify-start gap-1.5 rounded-xl border border-purple-500/20 bg-purple-950/40 px-2.5 py-2 text-xs text-purple-300">
+              <div className="flex items-center gap-1.5 rounded-xl border border-purple-500/20 bg-purple-950/40 px-3 py-2 text-xs text-purple-300">
                 <CheckCircle2 size={14} className="shrink-0" />
-                <span className="truncate font-medium">Synced APIs</span>
+                <span className="whitespace-nowrap font-medium">Synced APIs</span>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* Bottom Metrics / Telemetry Row */}
-        <div className="mt-5 flex flex-wrap items-center justify-between border-t border-white/10 pt-4 text-xs text-slate-400 gap-2">
+        <div className="mt-4 flex flex-wrap items-center justify-between border-t border-white/10 pt-3 text-[11px] sm:text-xs text-slate-400 gap-2">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
             <span>Eliminates Manual Copy-Paste & Data Handoffs</span>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Hero } from "@/components/marketing/hero";
-import { ValueBand } from "@/components/marketing/value-band";
 import { IndustryStrip } from "@/components/marketing/industry-strip";
 import { ServicesSection } from "@/components/marketing/services-section";
 import { SolutionsInPractice } from "@/components/marketing/solutions-in-practice";
@@ -15,10 +14,7 @@ export default function HomePage() {
       {/* 01. Hero Section (Dark Luminous) */}
       <Hero />
 
-      {/* 02. Compact Value / Proof Band (Elevated White Transition) */}
-      <ValueBand />
-
-      {/* 03. Services (Light 2x2 High-Density Modules) */}
+      {/* 02. Services + Overlapping Value Band (Light 2x2 High-Density Modules) */}
       <ServicesSection />
 
       {/* 04. Intelligence / Workflow Visualization (Dark Showcase) */}

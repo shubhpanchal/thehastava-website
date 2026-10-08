@@ -7,6 +7,7 @@ import { Container } from "@/components/shared/container";
 import { Reveal } from "@/components/ui/reveal";
 
 import { SERVICES_DATA } from "@/config/services";
+import { ValueBand } from "./value-band";
 
 export function ServicesSection() {
   const TECHNICAL_CUES: Record<string, { eyebrow: string; badge: string; steps: string[] }> = {
@@ -33,8 +34,11 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="solutions" className="relative bg-[#F8FAFC] py-24 md:py-32 text-slate-900 overflow-hidden border-t border-slate-200/60">
-      <Container className="relative z-10">
+    <section id="solutions" className="relative z-20 bg-[#F8FAFC] pt-10 sm:pt-12 md:pt-14 pb-16 md:pb-24 lg:pb-28 text-slate-900">
+      {/* 02. Standalone Value / Proof Band with Hero separation */}
+      <ValueBand />
+
+      <Container className="relative z-10 pt-8 sm:pt-10 md:pt-12">
         {/* Section Heading */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <Reveal className="max-w-3xl">
@@ -62,7 +66,7 @@ export function ServicesSection() {
         </div>
 
         {/* 2x2 Substantial Service Solution Cards */}
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
+        <div className="mt-10 md:mt-12 grid gap-6 md:grid-cols-2">
           {SERVICES_DATA.map((service, index) => {
             const Icon = service.icon;
             const techCue = TECHNICAL_CUES[service.id];
@@ -71,7 +75,7 @@ export function ServicesSection() {
               <Reveal
                 key={service.id}
                 delay={index * 0.08}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-9 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
               >
                 <div>
                   {/* Top Row: Icon Badge + Category Eyebrow & Status Badge */}
@@ -96,7 +100,7 @@ export function ServicesSection() {
                   </div>
 
                   {/* Service Description */}
-                  <p className="mt-6 text-sm sm:text-base leading-relaxed text-slate-600">
+                  <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-600">
                     {service.description}
                   </p>
 
@@ -106,14 +110,14 @@ export function ServicesSection() {
                       <span>Execution Architecture</span>
                       <span className="text-blue-600 font-mono text-[10px]">Active Flow</span>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2">
                       {techCue.steps.map((step, sIdx) => (
                         <div
                           key={step}
-                          className="flex items-center gap-1.5 rounded-lg border border-slate-200/80 bg-white px-2.5 py-2 text-xs font-medium text-slate-700 shadow-2xs"
+                          className="flex items-center gap-2 rounded-lg border border-slate-200/80 bg-white px-2.5 py-2 text-xs font-medium text-slate-700 shadow-2xs"
                         >
-                          <span className="text-[10px] font-mono text-blue-600 font-bold">{sIdx + 1}.</span>
-                          <span className="truncate">{step}</span>
+                          <span className="text-[10px] font-mono text-blue-600 font-bold shrink-0">{sIdx + 1}.</span>
+                          <span className="leading-snug">{step}</span>
                         </div>
                       ))}
                     </div>

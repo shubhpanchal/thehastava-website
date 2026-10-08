@@ -42,7 +42,7 @@ export function WhyHastava() {
   ];
 
   return (
-    <section className="relative bg-[#F8FAFC] py-24 md:py-32 text-slate-900 overflow-hidden border-t border-slate-200/60">
+    <section className="relative bg-[#F8FAFC] py-16 md:py-20 lg:py-24 text-slate-900 overflow-hidden border-t border-slate-200/60">
       <Container className="relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <Reveal className="max-w-3xl">
@@ -60,14 +60,14 @@ export function WhyHastava() {
         </div>
 
         {/* 2x2 Substantial Feature Grid */}
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
+        <div className="mt-10 md:mt-12 grid gap-6 md:grid-cols-2">
           {WHY_FEATURES.map((item, index) => {
             const Icon = item.icon;
             return (
               <Reveal
                 key={item.title}
                 delay={index * 0.08}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-9 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
               >
                 <div>
                   <div className="flex items-center gap-4">

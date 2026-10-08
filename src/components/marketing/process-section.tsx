@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { Sparkles, Search, Compass, Hammer, Rocket, LineChart } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { Reveal } from "@/components/ui/reveal";
+import { ProcessFlowConnector } from "./workflows/process-flow-connector";
 
 const PROCESS_STEPS = [
   {
@@ -63,11 +64,8 @@ export function ProcessSection() {
 
         {/* Connected Horizontal Timeline (Desktop) & Stack (Mobile) */}
         <div className="relative mt-10 md:mt-14">
-          {/* Connecting Line on Desktop */}
-          <div
-            className="hidden lg:block absolute top-14 left-10 right-10 h-[2px] bg-gradient-to-r from-blue-200 via-blue-500 to-indigo-300"
-            aria-hidden="true"
-          />
+          {/* Connecting Line with subtle animated progress wave on Desktop */}
+          <ProcessFlowConnector />
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
             {PROCESS_STEPS.map((step, index) => {

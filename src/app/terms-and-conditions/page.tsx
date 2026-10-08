@@ -1,44 +1,47 @@
 import React from "react";
 import { Container } from "@/components/shared/container";
+import { Eyebrow } from "@/components/ui/typography";
 
 export const metadata = {
-  title: "Terms & Conditions | HASTAVA B2B Trading",
-  description: "Review HASTAVA's standard business-to-business sourcing, export payment structures, counter-sampling timelines, and shipping liability terms.",
+  title: "Terms & Conditions | HASTAVA AI, Data & Automation",
+  description: "Review HASTAVA's standard terms of service, engagement models, intellectual property, and data protection guidelines.",
 };
 
 export default function TermsAndConditionsPage() {
   return (
-    <div className="bg-ivory py-16 sm:py-24">
+    <div className="bg-white py-16 sm:py-24 text-slate-900 border-b border-slate-200">
       <Container className="max-w-3xl flex flex-col gap-8">
-        <div className="flex flex-col gap-3 border-b border-ivory-dark/65 pb-6">
-          <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-gold">Trade Framework</span>
-          <h1 className="font-serif text-3xl sm:text-4xl text-navy">Terms & Conditions</h1>
-          <span className="font-sans text-xs text-slate-muted">Last Updated: July 2026</span>
+        <div className="flex flex-col gap-3 border-b border-slate-200 pb-6">
+          <Eyebrow variant="blue">Legal Framework</Eyebrow>
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            Terms & Conditions
+          </h1>
+          <span className="font-mono text-xs text-slate-500">Last Updated: October 2026</span>
         </div>
 
-        <div className="font-sans text-xs sm:text-sm text-slate-muted leading-relaxed flex flex-col gap-6">
+        <div className="font-sans text-sm text-slate-600 leading-relaxed flex flex-col gap-6">
           <p>
-            These terms define the business-to-business (B2B) trade relations, export terms, and sampling agreements between HASTAVA and our international clients.
+            These terms govern the engineering partnerships, AI/data software development, and automation consulting services provided by HASTAVA to business clients.
           </p>
 
-          <div className="flex flex-col gap-3">
-            <h2 className="font-serif text-lg text-navy font-semibold">1. Sampling & Development</h2>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-lg text-slate-900 font-bold">1. Scope of Engagement</h2>
             <p>
-              Custom counter-samples require standard development times (normally 14 to 28 days depending on craft complexity). Sample costs are paid in advance and are fully refundable upon confirmation of the associated bulk purchase order.
+              HASTAVA delivers custom AI automation pipelines, data engineering architecture, and integrated business software based on agreed sprint specifications and technical statements of work.
             </p>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <h2 className="font-serif text-lg text-navy font-semibold">2. Sourcing & Payment Structures</h2>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-lg text-slate-900 font-bold">2. Intellectual Property & Code Ownership</h2>
             <p>
-              Standard commercial orders require a 30% deposit upon order confirmation, with the remaining 70% balance due against the presentation of the Bill of Lading (B/L) and shipping documents. Other payment methods (such as Irrevocable Letters of Credit) are subject to prior approval.
+              Custom application code, data transformations, and bespoke automation workflows engineered specifically for the client remain the intellectual property of the client upon full payment. Underlying reusable libraries and foundation modules remain the property of HASTAVA under a perpetual license to the client.
             </p>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <h2 className="font-serif text-lg text-navy font-semibold">3. Quality Disputes & Allowances</h2>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-lg text-slate-900 font-bold">3. Confidentiality & Data Security</h2>
             <p>
-              Given that our catalog items are 100% handcrafted from natural wood, stone, clay, or fabrics, slight variations in color, grain, and dimensions are inherent and celebrated as proof of authenticity. We accommodate a standard 2% break/defect margin in fragile shipments.
+              HASTAVA adheres to strict non-disclosure protocols. Client operational data, proprietary schemas, and system credentials are encrypted and accessed solely for development and deployment purposes.
             </p>
           </div>
         </div>

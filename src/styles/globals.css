@@ -2,15 +2,69 @@
 
 @theme {
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-display), var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
   --color-hastava-navy: #061326;
+  --color-hastava-deep: #030712;
+  --color-hastava-slate: #0B1528;
+  --color-hastava-surface: #0F1D32;
+  --color-hastava-surface-elevated: #142540;
   --color-hastava-blue: #2563EB;
   --color-hastava-indigo: #4F46E5;
   --color-hastava-cyan: #06B6D4;
+  --color-hastava-cyan-light: #22D3EE;
+  --color-hastava-emerald: #10B981;
+  --color-hastava-amber: #F59E0B;
+  --color-hastava-rose: #F43F5E;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
 }
 
 @layer base {
   :root {
     color-scheme: light;
+    --background: #ffffff;
+    --foreground: #0f172a;
+    --surface: #f8fafc;
+    --surface-elevated: #ffffff;
+    --border: #e2e8f0;
+    --border-subtle: #f1f5f9;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --accent: #2563eb;
+    --accent-cyan: #06b6d4;
+    --accent-indigo: #4f46e5;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #f43f5e;
+
+    --duration-instant: 100ms;
+    --duration-fast: 200ms;
+    --duration-normal: 350ms;
+    --duration-slow: 500ms;
+    --duration-deliberate: 800ms;
+  }
+
+  .dark, [data-theme="dark"], .theme-dark {
+    color-scheme: dark;
+    --background: #030712;
+    --foreground: #f8fafc;
+    --surface: #0b1528;
+    --surface-elevated: #0f203c;
+    --border: #1e293b;
+    --border-subtle: #0f1c30;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --accent: #3b82f6;
+    --accent-cyan: #22d3ee;
+    --accent-indigo: #6366f1;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --error: #fb7185;
   }
   
   html {
@@ -27,8 +81,13 @@
   }
   
   ::selection {
-    background: rgba(37, 99, 235, 0.25);
+    background: rgba(6, 182, 212, 0.3);
     color: #061326;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -38,7 +97,7 @@
 
 @utility container-custom {
   width: 100%;
-  max-width: 88rem; /* 1408px for desktop scale */
+  max-width: 90rem; /* 1440px for desktop scale */
   margin-inline: auto;
   padding-inline: 1.25rem;
   @media (min-width: 640px) {
@@ -51,7 +110,7 @@
 
 @utility container-narrow {
   width: 100%;
-  max-width: 68rem; /* 1088px for focused content */
+  max-width: 70rem; /* 1120px for focused content */
   margin-inline: auto;
   padding-inline: 1.25rem;
   @media (min-width: 640px) {
@@ -100,25 +159,30 @@
   text-transform: uppercase;
 }
 
-/* Background Grids & Technical Patterns */
+/* Background Grids, Dot Matrices & Technical Patterns */
 .hero-luminous {
   background: linear-gradient(135deg, #08172B 0%, #0B1F38 50%, #12345A 100%);
 }
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+  mask-image: radial-gradient(circle at center, black 30%, transparent 85%);
 }
 
 .hero-grid-subtle {
   background-image:
-    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
   background-size: 36px 36px;
   mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+}
+
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(6, 182, 212, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 .radial-glow-blue {
@@ -133,7 +197,7 @@
   background: radial-gradient(circle at center, rgba(79, 70, 229, 0.12) 0%, rgba(6, 19, 38, 0) 70%);
 }
 
-/* Micro Animations */
+/* Micro Animations & Shimmers */
 .float-slow {
   animation: floatSlow 8s ease-in-out infinite;
 }
@@ -181,11 +245,12 @@
   }
 }
 
+/* Accessibility: Strict Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
+    animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0.001ms !important;
   }
 }

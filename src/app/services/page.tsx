@@ -15,7 +15,7 @@ export default function ServicesPage() {
   return (
     <div className="overflow-x-hidden bg-white text-slate-900">
       {/* Hero Header */}
-      <section className="relative overflow-hidden hero-luminous py-20 md:py-28 text-white border-b border-white/10">
+      <section className="relative overflow-hidden hero-luminous pt-12 pb-14 md:pt-16 md:pb-20 text-white border-b border-white/10">
         <div className="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full bg-blue-500/20 blur-[140px] pointer-events-none"
@@ -28,10 +28,10 @@ export default function ServicesPage() {
               <Sparkles size={13} className="text-cyan-400" />
               <span>Core Capabilities</span>
             </div>
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
+            <h1 className="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
               Practical AI and data solutions for modern businesses.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-slate-200">
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-200">
               We design, build, and deploy custom automation infrastructure that eliminates manual busywork, integrates your tools, and scales with your team.
             </p>
           </Reveal>
@@ -39,16 +39,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="relative bg-[#F8FAFC] py-20 md:py-28 text-slate-900 border-b border-slate-200/60">
+      <section className="relative bg-[#F8FAFC] py-14 md:py-20 text-slate-900 border-b border-slate-200/60">
         <Container>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {SERVICES_DATA.map((service, index) => {
               const Icon = service.icon;
               return (
                 <Reveal
                   key={service.id}
                   delay={index * 0.08}
-                  className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
+                  className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 sm:p-9 shadow-sm transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:shadow-slate-200/60"
                 >
                   <div>
                     <div className="flex items-center gap-4">

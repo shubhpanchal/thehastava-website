@@ -56,7 +56,7 @@ const PRACTICAL_SOLUTIONS = [
 
 export function SolutionsInPractice() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#08172B] via-[#0B1F38] to-[#12345A] py-24 md:py-32 text-white border-y border-white/10">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#08172B] via-[#0B1F38] to-[#12345A] py-16 md:py-20 lg:py-24 text-white border-y border-white/10">
       {/* Dynamic Background Glows */}
       <div
         className="absolute top-1/3 -left-32 h-[450px] w-[450px] rounded-full bg-blue-500/15 blur-[120px] pointer-events-none"
@@ -95,14 +95,14 @@ export function SolutionsInPractice() {
         </div>
 
         {/* 4 Practical Solution Workflow Cards */}
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
+        <div className="mt-10 md:mt-12 grid gap-6 md:grid-cols-2">
           {PRACTICAL_SOLUTIONS.map((sol, index) => {
             const Icon = sol.icon;
             return (
               <Reveal
                 key={sol.num}
                 delay={index * 0.08}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/12 bg-[#081830]/85 p-8 sm:p-10 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(6,182,212,0.14)]"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/12 bg-[#081830]/85 p-7 sm:p-9 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_20px_50px_rgba(6,182,212,0.14)]"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -125,12 +125,12 @@ export function SolutionsInPractice() {
                     </span>
                   </div>
 
-                  <p className="mt-6 text-sm sm:text-base leading-relaxed text-slate-300">
+                  <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-300">
                     {sol.desc}
                   </p>
 
                   {/* Visual Step Pipeline Flow */}
-                  <div className="mt-6 rounded-2xl border border-white/10 bg-slate-950/60 p-4.5">
+                  <div className="mt-6 rounded-2xl border border-white/10 bg-slate-950/60 p-4">
                     <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-cyan-400 mb-3">
                       <div className="flex items-center gap-1.5">
                         <Zap size={13} className="text-cyan-400 animate-pulse" />
@@ -138,14 +138,14 @@ export function SolutionsInPractice() {
                       </div>
                       <span className="text-slate-400 font-mono text-[10px]">End-to-End</span>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2">
                       {sol.steps.map((step, sIdx) => (
                         <div
                           key={step}
-                          className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-2 text-xs text-slate-200"
+                          className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-2 text-xs text-slate-200"
                         >
-                          <span className="text-[11px] font-mono text-cyan-400 font-bold">{sIdx + 1}.</span>
-                          <span className="truncate">{step}</span>
+                          <span className="text-[11px] font-mono text-cyan-400 font-bold shrink-0">{sIdx + 1}.</span>
+                          <span className="leading-snug">{step}</span>
                         </div>
                       ))}
                     </div>
@@ -153,7 +153,7 @@ export function SolutionsInPractice() {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <span className="text-xs font-mono text-slate-300 truncate max-w-[320px] sm:max-w-none">
+                  <span className="text-xs font-mono text-slate-300 leading-relaxed">
                     {sol.pattern}
                   </span>
                   <Link
@@ -170,7 +170,7 @@ export function SolutionsInPractice() {
         </div>
 
         {/* Bottom Banner */}
-        <Reveal delay={0.2} className="mt-12">
+        <Reveal delay={0.2} className="mt-10 md:mt-12">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-5 rounded-3xl border border-cyan-400/25 bg-cyan-950/30 p-7 sm:p-9 backdrop-blur-md">
             <div>
               <h4 className="text-lg font-bold text-white">

@@ -28,7 +28,7 @@ const INDUSTRIES = [
 
 export function IndustryStrip() {
   return (
-    <section className="relative bg-white py-20 border-t border-slate-200/60 text-slate-900">
+    <section className="relative bg-white py-12 md:py-16 border-t border-slate-200/60 text-slate-900">
       <Container>
         <div className="flex flex-col items-center text-center">
           <Reveal>
@@ -42,7 +42,7 @@ export function IndustryStrip() {
         </div>
 
         {/* Industry Interactive Cards Grid */}
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+        <div className="mt-8 md:mt-10 grid grid-cols-2 gap-3.5 sm:grid-cols-4 lg:grid-cols-8">
           {INDUSTRIES.map((ind, index) => {
             const Icon = ind.icon;
             return (

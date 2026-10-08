@@ -14,7 +14,7 @@ export default function CaseStudiesPage() {
   return (
     <div className="overflow-x-hidden bg-white text-slate-900">
       {/* Hero Header */}
-      <section className="relative overflow-hidden hero-luminous py-20 md:py-28 text-white border-b border-white/10">
+      <section className="relative overflow-hidden hero-luminous pt-12 pb-14 md:pt-16 md:pb-20 text-white border-b border-white/10">
         <div className="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[550px] rounded-full bg-blue-500/20 blur-[140px] pointer-events-none"
@@ -27,10 +27,10 @@ export default function CaseStudiesPage() {
               <Sparkles size={13} className="text-cyan-400" />
               <span>Verified Outcomes</span>
             </div>
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
+            <h1 className="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
               Real work deserves real proof.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-slate-200">
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-200">
               We&apos;re building a library of documented client outcomes. As projects move into production, we&apos;ll publish the problem, solution, and verified results here.
             </p>
           </Reveal>
@@ -38,7 +38,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Coming Soon Notice Card */}
-      <section className="relative bg-[#F8FAFC] py-20 md:py-28 text-slate-900 border-b border-slate-200/60">
+      <section className="relative bg-[#F8FAFC] py-14 md:py-20 text-slate-900 border-b border-slate-200/60">
         <Container className="max-w-4xl">
           <Reveal>
             <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-8 md:p-12 shadow-xl shadow-slate-200/50 text-center">

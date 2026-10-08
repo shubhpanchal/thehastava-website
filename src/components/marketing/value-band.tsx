@@ -29,10 +29,10 @@ const VALUE_ITEMS = [
 
 export function ValueBand() {
   return (
-    <section className="relative z-20 -mt-10 md:-mt-12 px-4 sm:px-6 lg:px-8">
+    <div className="relative z-10 px-4 sm:px-6 lg:px-8">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-7 md:p-9 shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
-          <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="relative overflow-hidden rounded-3xl border-2 border-blue-500/80 bg-white p-5 sm:p-6 md:p-7 shadow-[0_20px_50px_rgba(0,102,255,0.12)]">
+          <div className="relative grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {VALUE_ITEMS.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -40,19 +40,19 @@ export function ValueBand() {
                   key={item.title}
                   className={`flex flex-col justify-between ${
                     index !== 0
-                      ? "lg:border-l lg:border-slate-200/80 lg:pl-8"
+                      ? "lg:border-l lg:border-slate-200/80 lg:pl-6"
                       : ""
                   }`}
                 >
-                  <div className="flex items-center gap-3.5">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100 shadow-sm">
-                      <Icon size={20} />
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100 shadow-sm">
+                      <Icon size={18} />
                     </div>
-                    <h3 className="text-base font-bold tracking-tight text-slate-900">
+                    <h3 className="text-sm sm:text-base font-bold tracking-tight text-slate-900">
                       {item.title}
                     </h3>
                   </div>
-                  <p className="mt-3 text-xs leading-relaxed text-slate-600">
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
                     {item.desc}
                   </p>
                 </div>
@@ -61,6 +61,6 @@ export function ValueBand() {
           </div>
         </div>
       </Container>
-    </section>
+    </div>
   );
 }

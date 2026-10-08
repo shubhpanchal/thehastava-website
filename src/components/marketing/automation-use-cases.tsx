@@ -98,7 +98,7 @@ export function AutomationUseCases() {
   const activeItem = USE_CASES_DATA.find((c) => c.id === selectedCase) || USE_CASES_DATA[0];
 
   return (
-    <section className="relative bg-[#F8FAFC] py-24 md:py-32 text-slate-900 overflow-hidden border-t border-slate-200/60">
+    <section className="relative bg-[#F8FAFC] py-16 md:py-20 lg:py-24 text-slate-900 overflow-hidden border-t border-slate-200/60">
       <Container className="relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <Reveal className="max-w-3xl">
@@ -116,7 +116,7 @@ export function AutomationUseCases() {
         </div>
 
         {/* Dynamic Department Tabs / Switcher Bar */}
-        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-5">
+        <div className="mt-8 md:mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-5">
           {USE_CASES_DATA.map((item) => {
             const Icon = item.icon;
             const isSelected = selectedCase === item.id;
@@ -124,14 +124,14 @@ export function AutomationUseCases() {
               <button
                 key={item.id}
                 onClick={() => setSelectedCase(item.id)}
-                className={`flex flex-col items-center sm:items-start gap-3 rounded-2xl border p-4.5 text-left transition-all duration-300 ${
+                className={`flex flex-col items-center sm:items-start gap-3 rounded-2xl border p-4 sm:p-4.5 text-left transition-all duration-300 ${
                   isSelected
                     ? "border-blue-600 bg-blue-600 text-white shadow-xl shadow-blue-600/25 scale-[1.02]"
                     : "border-slate-200/90 bg-white hover:border-blue-300 hover:bg-slate-50/80 text-slate-800 shadow-2xs"
                 }`}
               >
                 <div
-                  className={`flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${
+                  className={`flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl transition-colors ${
                     isSelected
                       ? "bg-white/20 text-white font-bold"
                       : "bg-blue-50 text-blue-600 border border-blue-100"
@@ -140,7 +140,7 @@ export function AutomationUseCases() {
                   <Icon size={20} />
                 </div>
                 <div>
-                  <h3 className={`text-sm font-bold tracking-tight ${isSelected ? "text-white" : "text-slate-900"}`}>
+                  <h3 className={`text-xs sm:text-sm font-bold tracking-tight ${isSelected ? "text-white" : "text-slate-900"}`}>
                     {item.title}
                   </h3>
                 </div>
@@ -157,7 +157,7 @@ export function AutomationUseCases() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35 }}
-            className="mt-8 overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-8 md:p-12 shadow-xl shadow-slate-200/50"
+            className="mt-6 md:mt-8 overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 md:p-10 shadow-xl shadow-slate-200/50"
           >
             {/* Top Overview & The Manual Problem */}
             <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 border-b border-slate-100 pb-8">
